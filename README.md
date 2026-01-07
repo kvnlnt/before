@@ -2,7 +2,7 @@
 
 Single-File, Classless, Themeable CSS for Semantic HTML
 
-[Website ↗](kvnlnt.github.io/before/)
+[Website ↗](https://kvnlnt.github.io/before/)
 
 ## Philosophy & Principles
 
