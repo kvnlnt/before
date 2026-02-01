@@ -1937,9 +1937,29 @@ Accordions can be nested to create hierarchical content structures.
 
 A live region that displays important, time-sensitive information to the user.
 
+**Selectors:** `[role="alert"]`, `[role="alert"][aria-live="assertive"]`, `[role="alert"][aria-live="polite"]`, `[role="alert"][data-tone="success"]`, `[role="alert"][data-tone="warning"]`
 
 
+#### Basic Alert
 
+A simple alert for displaying messages to users.
+
+```html
+<div role="alert">
+  <strong>Notice:</strong> Your message here.
+</div>
+```
+
+#### Alert Tones
+
+Alerts with different semantic tones using data-tone attribute.
+
+```html
+<div role="alert" data-tone="success">Success message</div>
+<div role="alert" data-tone="warning">Warning message</div>
+<div role="alert" data-tone="error">Error message</div>
+<div role="alert" data-tone="info">Info message</div>
+```
 
 ---
 
@@ -1947,9 +1967,22 @@ A live region that displays important, time-sensitive information to the user.
 
 A navigation aid that shows the user's current location within a site hierarchy.
 
+**Selectors:** `nav[aria-label*="breadcrumb"], nav[aria-label*="Breadcrumb"]`, `nav[aria-label*="breadcrumb"] ol, nav[aria-label*="Breadcrumb"] ol`, `nav[aria-label*="breadcrumb"] li, nav[aria-label*="Breadcrumb"] li`, `nav[aria-label*="breadcrumb"] li:not(:last-child)::after, nav[aria-label*="Breadcrumb"] li:not(:last-child)::after`, `nav[aria-label*="breadcrumb"] a[aria-current="page"], nav[aria-label*="Breadcrumb"] a[aria-current="page"]`
 
 
+#### Basic Breadcrumb
 
+A simple breadcrumb navigation showing the page hierarchy.
+
+```html
+<nav aria-label="Breadcrumb">
+  <ol>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Category</a></li>
+    <li><a href="#" aria-current="page">Current Page</a></li>
+  </ol>
+</nav>
+```
 
 ---
 
@@ -1957,9 +1990,28 @@ A navigation aid that shows the user's current location within a site hierarchy.
 
 An interactive element that triggers an action when activated by the user.
 
+**Selectors:** `button, [role='button'], input[type='button'], input[type='submit'], input[type='reset']`, `button:hover, [role='button']:hover, input[type='button']:hover, input[type='submit']:hover, input[type='reset']:hover`, `button:active, [role='button']:active, input[type='button']:active, input[type='submit']:active, input[type='reset']:active`, `button:focus-visible, [role='button']:focus-visible, input[type='button']:focus-visible, input[type='submit']:focus-visible, input[type='reset']:focus-visible`, `button:disabled, [role='button'][aria-disabled='true'], input[type='button']:disabled, input[type='submit']:disabled, input[type='reset']:disabled`
 
 
+#### Button Variants
 
+Different button styles using data-variant attribute.
+
+```html
+<button>Primary</button>
+<button data-variant="secondary">Secondary</button>
+<button data-variant="ghost">Ghost</button>
+<button data-variant="danger">Danger</button>
+<button disabled>Disabled</button>
+```
+
+#### Button as Link
+
+An anchor element styled as a button using role='button'.
+
+```html
+<a href="#" role="button">Link Button</a>
+```
 
 ---
 
@@ -1967,9 +2019,25 @@ An interactive element that triggers an action when activated by the user.
 
 A rotating set of content items that can be navigated through sequentially.
 
+**Selectors:** `[aria-roledescription="carousel"]`, `[aria-roledescription="carousel"] [aria-live]`, `[aria-roledescription="carousel"] [aria-live]::-webkit-scrollbar`, `[aria-roledescription="slide"]`, `[aria-roledescription="carousel"] [aria-label*="revious"], [aria-roledescription="carousel"] [aria-label*="ext"]`
 
 
+#### Basic Carousel
 
+A simple image carousel with navigation buttons.
+
+```html
+<section aria-roledescription="carousel" aria-label="Featured">
+  <div aria-live="polite">
+    <article aria-roledescription="slide" aria-label="Slide 1">
+      <img src="..." alt="...">
+    </article>
+    <article aria-roledescription="slide" aria-label="Slide 2">
+      <img src="..." alt="...">
+    </article>
+  </div>
+</section>
+```
 
 ---
 
@@ -1977,9 +2045,18 @@ A rotating set of content items that can be navigated through sequentially.
 
 A form control that allows users to select one or more options from a set.
 
+**Selectors:** `input[type="checkbox"]`, `input[type="checkbox"]:checked`, `input[type="checkbox"]:checked::after`, `input[type="checkbox"]:focus-visible`, `input[type="checkbox"]:disabled`
 
 
+#### Checkbox States
 
+Checkboxes in various states.
+
+```html
+<label><input type="checkbox"> Option</label>
+<label><input type="checkbox" checked> Selected</label>
+<label><input type="checkbox" disabled> Disabled</label>
+```
 
 ---
 
@@ -1987,9 +2064,22 @@ A form control that allows users to select one or more options from a set.
 
 A composite widget combining a text input with a popup listbox for selecting values.
 
+**Selectors:** `[role="combobox"]`, `[role="combobox"] input`, `[role="combobox"] [role="listbox"]`, `[role="combobox"] [role="listbox"][hidden]`, `[role="combobox"] [role="option"]`
 
 
+#### Basic Combobox
 
+A text input with an associated listbox.
+
+```html
+<div role="combobox" aria-expanded="true" aria-haspopup="listbox">
+  <input type="text" aria-autocomplete="list">
+  <ul role="listbox">
+    <li role="option">Option 1</li>
+    <li role="option" aria-selected="true">Option 2</li>
+  </ul>
+</div>
+```
 
 ---
 
@@ -1997,9 +2087,23 @@ A composite widget combining a text input with a popup listbox for selecting val
 
 A modal or non-modal window that appears above the page content requiring user interaction.
 
+**Selectors:** `dialog`, `dialog::backdrop`, `dialog[open]`, `dialog header`, `dialog footer`
 
 
+#### Basic Dialog
 
+A modal dialog with header and footer.
+
+```html
+<dialog open>
+  <header><h3>Title</h3></header>
+  <p>Content...</p>
+  <footer>
+    <button data-variant="secondary">Cancel</button>
+    <button>Confirm</button>
+  </footer>
+</dialog>
+```
 
 ---
 
@@ -2007,9 +2111,30 @@ A modal or non-modal window that appears above the page content requiring user i
 
 A button that controls the visibility of a section of content.
 
+**Selectors:** `details:not([name])`, `details:not([name]) > summary`, `details:not([name]) > summary::-webkit-details-marker`, `details:not([name]) > summary::after`, `details:not([name])[open] > summary::after`
 
 
+#### Basic Disclosure
 
+A collapsible section using the native details/summary elements.
+
+```html
+<details>
+  <summary>Toggle content</summary>
+  <p>Hidden content...</p>
+</details>
+```
+
+#### Disclosure (Open by Default)
+
+A disclosure that starts in the open state.
+
+```html
+<details open>
+  <summary>Expanded</summary>
+  <p>Visible content...</p>
+</details>
+```
 
 ---
 
@@ -2017,9 +2142,21 @@ A button that controls the visibility of a section of content.
 
 A scrollable list of articles where new content may be added as the user scrolls.
 
+**Selectors:** `[role="feed"]`, `[role="feed"] article`, `[role="feed"] article:focus-within`
 
 
+#### Basic Feed
 
+A feed of articles with proper ARIA attributes.
+
+```html
+<section role="feed" aria-label="Feed">
+  <article aria-posinset="1" aria-setsize="-1" tabindex="0">
+    <h4>Article Title</h4>
+    <p>Content...</p>
+  </article>
+</section>
+```
 
 ---
 
@@ -2027,9 +2164,23 @@ A scrollable list of articles where new content may be added as the user scrolls
 
 An interactive two-dimensional data structure with rows and columns of cells.
 
+**Selectors:** `[role="grid"]`, `[role="grid"] [role="row"]`, `[role="grid"] [role="gridcell"], [role="grid"] [role="columnheader"], [role="grid"] [role="rowheader"]`, `[role="grid"] [role="columnheader"], [role="grid"] [role="rowheader"]`, `[role="grid"] [role="gridcell"]:focus, [role="grid"] [role="columnheader"]:focus, [role="grid"] [role="rowheader"]:focus`
 
 
+#### Basic Grid
 
+An interactive grid with keyboard navigation support.
+
+```html
+<div role="grid" aria-label="Data" style="grid-template-columns: repeat(3, 1fr);">
+  <div role="row">
+    <div role="columnheader">Header</div>
+  </div>
+  <div role="row">
+    <div role="gridcell" tabindex="0">Cell</div>
+  </div>
+</div>
+```
 
 ---
 
@@ -2037,9 +2188,19 @@ An interactive two-dimensional data structure with rows and columns of cells.
 
 A container for introductory content or navigational aids at the top of a page or section.
 
+**Selectors:** `header`, `header > :first-child`, `header > :last-child`, `article header, section header`
 
 
+#### Page Header
 
+A header element at the top of a page.
+
+```html
+<header>
+  <h1>Title</h1>
+  <p>Description</p>
+</header>
+```
 
 ---
 
@@ -2047,9 +2208,22 @@ A container for introductory content or navigational aids at the top of a page o
 
 Semantic regions that help assistive technology users navigate and understand page structure.
 
+**Selectors:** `main`, `aside:not(article aside)`, `footer`
 
 
+#### Page Landmarks
 
+Semantic landmark elements for page structure.
+
+```html
+<header>Site header</header>
+<nav>Navigation</nav>
+<main>
+  <aside>Sidebar</aside>
+  Main content
+</main>
+<footer>Footer</footer>
+```
 
 ---
 
@@ -2057,9 +2231,20 @@ Semantic regions that help assistive technology users navigate and understand pa
 
 An interactive reference to a resource that navigates the user when activated.
 
+**Selectors:** `a[aria-disabled="true"]`, `a[download]::after`, `a[target="_blank"]::after`
 
 
+#### Link Variants
 
+Different link states and types.
+
+```html
+<a href="#">Link</a>
+<a href="#" aria-current="page">Current</a>
+<a href="#" aria-disabled="true">Disabled</a>
+<a href="#" target="_blank">External</a>
+<a href="#" download>Download</a>
+```
 
 ---
 
@@ -2067,9 +2252,19 @@ An interactive reference to a resource that navigates the user when activated.
 
 A widget that allows users to select one or more items from a list of choices.
 
+**Selectors:** `[role="listbox"]`, `[role="listbox"] [role="option"]`, `[role="listbox"] [role="option"]:hover`, `[role="listbox"] [role="option"][aria-selected="true"]`, `[role="listbox"] [role="option"]:focus`
 
 
+#### Single Select Listbox
 
+A listbox for selecting a single option.
+
+```html
+<ul role="listbox" aria-label="Options">
+  <li role="option" aria-selected="false" tabindex="0">Option 1</li>
+  <li role="option" aria-selected="true" tabindex="-1">Option 2</li>
+</ul>
+```
 
 ---
 
@@ -2176,9 +2371,16 @@ Menus can be nested multiple levels deep with flyout submenus.
 
 A graphical display of a numeric value within a known range.
 
+**Selectors:** `meter`, `meter::-webkit-meter-bar`, `meter::-webkit-meter-optimum-value`, `meter::-webkit-meter-suboptimum-value`, `meter::-webkit-meter-even-less-good-value`
 
 
+#### Meter States
 
+Meters showing different value ranges.
+
+```html
+<meter value="0.5" min="0" max="1" low="0.25" high="0.75" optimum="0.5">50%</meter>
+```
 
 ---
 
@@ -2186,9 +2388,20 @@ A graphical display of a numeric value within a known range.
 
 A group of mutually exclusive options where only one can be selected at a time.
 
+**Selectors:** `input[type="radio"]`, `input[type="radio"]:checked`, `input[type="radio"]:checked::after`, `input[type="radio"]:focus-visible`, `input[type="radio"]:disabled`
 
 
+#### Radio Group
 
+A group of radio buttons for single selection.
+
+```html
+<fieldset role="radiogroup">
+  <legend>Options:</legend>
+  <label><input type="radio" name="option"> Option 1</label>
+  <label><input type="radio" name="option" checked> Option 2</label>
+</fieldset>
+```
 
 ---
 
@@ -2196,9 +2409,16 @@ A group of mutually exclusive options where only one can be selected at a time.
 
 An input control that allows users to select a value from a range by dragging a thumb.
 
+**Selectors:** `input[type="range"]`, `input[type="range"]::-webkit-slider-thumb`, `input[type="range"]::-moz-range-thumb`, `input[type="range"]::-webkit-slider-thumb:active`, `input[type="range"]:focus-visible`
 
 
+#### Range Slider
 
+A slider for selecting a value within a range.
+
+```html
+<label>Value: <input type="range" min="0" max="100" value="50"></label>
+```
 
 ---
 
@@ -2206,9 +2426,16 @@ An input control that allows users to select a value from a range by dragging a 
 
 A numeric input field with increment and decrement buttons for adjusting values.
 
+**Selectors:** `input[type="number"]`, `input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button`, `input[type="number"]:focus`, `input[type="number"]:disabled`, `[role="spinbutton"]`
 
 
+#### Number Input
 
+A numeric input with spin buttons.
+
+```html
+<label>Value: <input type="number" min="0" max="100" value="1"></label>
+```
 
 ---
 
@@ -2216,9 +2443,17 @@ A numeric input field with increment and decrement buttons for adjusting values.
 
 A toggle control that represents an on/off or enabled/disabled state.
 
+**Selectors:** `[role="switch"]`, `[role="switch"]::before`, `[role="switch"][aria-checked="true"]`, `[role="switch"][aria-checked="true"]::before`, `[role="switch"]:focus-visible`
 
 
+#### Switch Toggle
 
+Toggle switches for on/off states.
+
+```html
+<span role="switch" aria-checked="false" tabindex="0"></span>
+<span role="switch" aria-checked="true" tabindex="0"></span>
+```
 
 ---
 
@@ -2226,9 +2461,24 @@ A toggle control that represents an on/off or enabled/disabled state.
 
 A structured grid of data organized in rows and columns for displaying information.
 
+**Selectors:** `table`, `th, td`, `th`, `thead th`, `tbody tr:hover`
 
 
+#### Basic Table
 
+A data table with headers and rows.
+
+```html
+<table>
+  <caption>Title</caption>
+  <thead>
+    <tr><th>Header</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Cell</td></tr>
+  </tbody>
+</table>
+```
 
 ---
 
@@ -2298,9 +2548,34 @@ Tabs can be disabled using the disabled attribute on the radio input.
 
 A container for grouping related controls such as buttons and menu items.
 
+**Selectors:** `[role="toolbar"]`, `[role="toolbar"][aria-orientation="vertical"]`, `[role="toolbar"] [role="separator"]`, `[role="toolbar"][aria-orientation="vertical"] [role="separator"]`, `[role="toolbar"] [role="group"]`
 
 
+#### Basic Toolbar
 
+A horizontal toolbar with grouped controls.
+
+```html
+<div role="toolbar" aria-label="Actions">
+  <div role="group" aria-label="Group 1">
+    <button>Action 1</button>
+    <button>Action 2</button>
+  </div>
+  <span role="separator"></span>
+  <button>Action 3</button>
+</div>
+```
+
+#### Vertical Toolbar
+
+A vertical toolbar using aria-orientation.
+
+```html
+<div role="toolbar" aria-orientation="vertical">
+  <button>Tool 1</button>
+  <button>Tool 2</button>
+</div>
+```
 
 ---
 
@@ -2308,9 +2583,26 @@ A container for grouping related controls such as buttons and menu items.
 
 A contextual popup that displays descriptive information about an element on hover or focus.
 
+**Selectors:** `[data-tooltip]`, `[data-tooltip]::after`, `[data-tooltip]:hover::after, [data-tooltip]:focus::after`, `[data-tooltip][data-tooltip-position="bottom"]::after`, `[data-tooltip][data-tooltip-position="left"]::after`
 
 
+#### Data Attribute Tooltip
 
+CSS-only tooltips using data-tooltip attribute.
+
+```html
+<button data-tooltip="Tooltip text">Hover me</button>
+<button data-tooltip="Bottom tooltip" data-tooltip-position="bottom">Bottom</button>
+```
+
+#### ARIA Tooltip
+
+Tooltip with proper ARIA role for accessibility.
+
+```html
+<button aria-describedby="my-tooltip">Trigger</button>
+<span role="tooltip" id="my-tooltip">Tooltip content</span>
+```
 
 ---
 
@@ -2318,9 +2610,23 @@ A contextual popup that displays descriptive information about an element on hov
 
 A grid widget that combines the features of a tree and a data grid.
 
+**Selectors:** `[role="treegrid"]`, `[role="treegrid"] [role="row"]`, `[role="treegrid"] [role="gridcell"], [role="treegrid"] [role="columnheader"]`, `[role="treegrid"] [role="columnheader"]`, `[role="treegrid"] [role="row"][aria-level="2"] [role="gridcell"]:first-child`
 
 
+#### Basic Treegrid
 
+A hierarchical data grid with expandable rows.
+
+```html
+<div role="treegrid">
+  <div role="row" aria-level="1" aria-expanded="true">
+    <span role="gridcell">Parent</span>
+  </div>
+  <div role="row" aria-level="2">
+    <span role="gridcell">Child</span>
+  </div>
+</div>
+```
 
 ---
 
@@ -2328,9 +2634,23 @@ A grid widget that combines the features of a tree and a data grid.
 
 A hierarchical list that can have nested groups of items that can be expanded or collapsed.
 
+**Selectors:** `[role="tree"]`, `[role="tree"] [role="group"]`, `[role="tree"] [role="treeitem"]`, `[role="tree"] [role="treeitem"]:hover`, `[role="tree"] [role="treeitem"]:focus`
 
 
+#### Basic Treeview
 
+A hierarchical tree with expandable nodes.
+
+```html
+<ul role="tree">
+  <li role="treeitem" aria-expanded="true" tabindex="0">
+    Parent
+    <ul role="group">
+      <li role="treeitem" tabindex="-1">Child</li>
+    </ul>
+  </li>
+</ul>
+```
 
 ---
 
@@ -2338,9 +2658,32 @@ A hierarchical list that can have nested groups of items that can be expanded or
 
 A movable divider that separates two sections and allows resizing them.
 
+**Selectors:** `[role="separator"][aria-orientation="vertical"]`, `[role="separator"]:not([aria-orientation]), [role="separator"][aria-orientation="horizontal"]`, `[role="separator"]:hover, [role="separator"]:focus`, `[role="separator"]:focus`
 
 
+#### Horizontal Splitter
 
+A vertical divider between two horizontal panes.
+
+```html
+<div style="display: flex;">
+  <div>Left</div>
+  <div role="separator" aria-orientation="vertical" tabindex="0"></div>
+  <div>Right</div>
+</div>
+```
+
+#### Vertical Splitter
+
+A horizontal divider between two vertical panes.
+
+```html
+<div style="display: flex; flex-direction: column;">
+  <div>Top</div>
+  <div role="separator" aria-orientation="horizontal" tabindex="0"></div>
+  <div>Bottom</div>
+</div>
+```
 
 ---
 

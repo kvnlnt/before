@@ -2595,58 +2595,891 @@ Line 2
     {
       title: "Alert",
       description: "A live region that displays important, time-sensitive information to the user.",
+      styles: {
+        '[role="alert"]': {
+          padding: "1em",
+          borderRadius: "0.5em",
+          border: "1px solid var(--surface_muted)",
+          backgroundColor: "var(--surface_raised)",
+          marginBlockEnd: "1em",
+        },
+        '[role="alert"][aria-live="assertive"]': {
+          borderColor: "var(--tone_error)",
+          backgroundColor: "oklch(from var(--tone_error) l c h / 0.1)",
+        },
+        '[role="alert"][aria-live="polite"]': {
+          borderColor: "var(--tone_info)",
+          backgroundColor: "oklch(from var(--tone_info) l c h / 0.1)",
+        },
+        '[role="alert"][data-tone="success"]': {
+          borderColor: "var(--tone_success)",
+          backgroundColor: "oklch(from var(--tone_success) l c h / 0.1)",
+        },
+        '[role="alert"][data-tone="warning"]': {
+          borderColor: "var(--tone_warning)",
+          backgroundColor: "oklch(from var(--tone_warning) l c h / 0.1)",
+        },
+        '[role="alert"][data-tone="error"]': {
+          borderColor: "var(--tone_error)",
+          backgroundColor: "oklch(from var(--tone_error) l c h / 0.1)",
+        },
+        '[role="alert"][data-tone="info"]': {
+          borderColor: "var(--tone_info)",
+          backgroundColor: "oklch(from var(--tone_info) l c h / 0.1)",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          '[role="alert"]': {
+            backgroundColor: "var(--surface_raised_dark)",
+            borderColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Basic Alert",
+          description: "A simple alert for displaying messages to users.",
+          preview: `<div role="alert">
+  <strong>Notice:</strong> Your session will expire in 5 minutes.
+</div>`,
+          code: `<div role="alert">
+  <strong>Notice:</strong> Your message here.
+</div>`,
+        },
+        {
+          title: "Alert Tones",
+          description: "Alerts with different semantic tones using data-tone attribute.",
+          preview: `<div role="alert" data-tone="success">
+  <strong>Success!</strong> Your changes have been saved.
+</div>
+<div role="alert" data-tone="warning">
+  <strong>Warning:</strong> This action cannot be undone.
+</div>
+<div role="alert" data-tone="error">
+  <strong>Error:</strong> Failed to save changes.
+</div>
+<div role="alert" data-tone="info">
+  <strong>Info:</strong> New features are available.
+</div>`,
+          code: `<div role="alert" data-tone="success">Success message</div>
+<div role="alert" data-tone="warning">Warning message</div>
+<div role="alert" data-tone="error">Error message</div>
+<div role="alert" data-tone="info">Info message</div>`,
+        },
+      ],
     },
     {
       title: "Breadcrumb",
       description: "A navigation aid that shows the user's current location within a site hierarchy.",
+      styles: {
+        'nav[aria-label*="breadcrumb"], nav[aria-label*="Breadcrumb"]': {
+          fontSize: "0.9em",
+        },
+        'nav[aria-label*="breadcrumb"] ol, nav[aria-label*="Breadcrumb"] ol': {
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          gap: "0.5em",
+          listStyle: "none",
+          margin: "0",
+          padding: "0",
+        },
+        'nav[aria-label*="breadcrumb"] li, nav[aria-label*="Breadcrumb"] li': {
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5em",
+        },
+        'nav[aria-label*="breadcrumb"] li:not(:last-child)::after, nav[aria-label*="Breadcrumb"] li:not(:last-child)::after':
+          {
+            content: '"/"',
+            opacity: "0.5",
+          },
+        'nav[aria-label*="breadcrumb"] a[aria-current="page"], nav[aria-label*="Breadcrumb"] a[aria-current="page"]': {
+          fontWeight: "600",
+          textDecoration: "none",
+          pointerEvents: "none",
+        },
+      },
+      example: [
+        {
+          title: "Basic Breadcrumb",
+          description: "A simple breadcrumb navigation showing the page hierarchy.",
+          preview: `<nav aria-label="Breadcrumb">
+  <ol>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">Electronics</a></li>
+    <li><a href="#" aria-current="page">Laptops</a></li>
+  </ol>
+</nav>`,
+          code: `<nav aria-label="Breadcrumb">
+  <ol>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Category</a></li>
+    <li><a href="#" aria-current="page">Current Page</a></li>
+  </ol>
+</nav>`,
+        },
+      ],
     },
     {
       title: "Button",
       description: "An interactive element that triggers an action when activated by the user.",
+      styles: {
+        "button, [role='button'], input[type='button'], input[type='submit'], input[type='reset']": {
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "0.5em",
+          padding: "0.625em 1.25em",
+          fontFamily: "inherit",
+          fontSize: "inherit",
+          fontWeight: "500",
+          lineHeight: "1.5",
+          color: "var(--text_color_inverse)",
+          backgroundColor: "var(--surface_interactive)",
+          border: "none",
+          borderRadius: "0.375em",
+          cursor: "pointer",
+          textDecoration: "none",
+          whiteSpace: "nowrap",
+          transition: "background-color 0.15s ease, opacity 0.15s ease, transform 0.1s ease",
+        },
+        "button:hover, [role='button']:hover, input[type='button']:hover, input[type='submit']:hover, input[type='reset']:hover":
+          {
+            backgroundColor: "var(--surface_interactive_hover)",
+          },
+        "button:active, [role='button']:active, input[type='button']:active, input[type='submit']:active, input[type='reset']:active":
+          {
+            backgroundColor: "var(--surface_interactive_active)",
+            transform: "scale(0.98)",
+          },
+        "button:focus-visible, [role='button']:focus-visible, input[type='button']:focus-visible, input[type='submit']:focus-visible, input[type='reset']:focus-visible":
+          {
+            outline: "2px solid var(--surface_interactive)",
+            outlineOffset: "2px",
+          },
+        "button:disabled, [role='button'][aria-disabled='true'], input[type='button']:disabled, input[type='submit']:disabled, input[type='reset']:disabled":
+          {
+            opacity: "0.5",
+            cursor: "not-allowed",
+            pointerEvents: "none",
+          },
+        "button[data-variant='secondary'], [role='button'][data-variant='secondary']": {
+          backgroundColor: "transparent",
+          color: "inherit",
+          border: "1px solid var(--surface_muted)",
+        },
+        "button[data-variant='secondary']:hover, [role='button'][data-variant='secondary']:hover": {
+          backgroundColor: "var(--surface_raised)",
+        },
+        "button[data-variant='ghost'], [role='button'][data-variant='ghost']": {
+          backgroundColor: "transparent",
+          color: "inherit",
+        },
+        "button[data-variant='ghost']:hover, [role='button'][data-variant='ghost']:hover": {
+          backgroundColor: "var(--surface_raised)",
+        },
+        "button[data-variant='danger'], [role='button'][data-variant='danger']": {
+          backgroundColor: "var(--tone_error)",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          "button[data-variant='secondary'], [role='button'][data-variant='secondary']": {
+            borderColor: "var(--surface_border_dark)",
+          },
+          "button[data-variant='secondary']:hover, [role='button'][data-variant='secondary']:hover": {
+            backgroundColor: "var(--surface_overlay_dark)",
+          },
+          "button[data-variant='ghost']:hover, [role='button'][data-variant='ghost']:hover": {
+            backgroundColor: "var(--surface_overlay_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Button Variants",
+          description: "Different button styles using data-variant attribute.",
+          preview: `<div style="display: flex; gap: 1em; flex-wrap: wrap;">
+  <button>Primary</button>
+  <button data-variant="secondary">Secondary</button>
+  <button data-variant="ghost">Ghost</button>
+  <button data-variant="danger">Danger</button>
+  <button disabled>Disabled</button>
+</div>`,
+          code: `<button>Primary</button>
+<button data-variant="secondary">Secondary</button>
+<button data-variant="ghost">Ghost</button>
+<button data-variant="danger">Danger</button>
+<button disabled>Disabled</button>`,
+        },
+        {
+          title: "Button as Link",
+          description: "An anchor element styled as a button using role='button'.",
+          preview: `<a href="#" role="button">Link Button</a>`,
+          code: `<a href="#" role="button">Link Button</a>`,
+        },
+      ],
     },
     {
       title: "Carousel",
       description: "A rotating set of content items that can be navigated through sequentially.",
+      styles: {
+        '[aria-roledescription="carousel"]': {
+          position: "relative",
+          overflow: "hidden",
+        },
+        '[aria-roledescription="carousel"] [aria-live]': {
+          display: "flex",
+          scrollSnapType: "x mandatory",
+          overflowX: "auto",
+          scrollBehavior: "smooth",
+          scrollbarWidth: "none",
+        },
+        '[aria-roledescription="carousel"] [aria-live]::-webkit-scrollbar': {
+          display: "none",
+        },
+        '[aria-roledescription="slide"]': {
+          flexShrink: "0",
+          width: "100%",
+          scrollSnapAlign: "start",
+        },
+        '[aria-roledescription="carousel"] [aria-label*="revious"], [aria-roledescription="carousel"] [aria-label*="ext"]':
+          {
+            position: "absolute",
+            top: "50%",
+            transform: "translateY(-50%)",
+            zIndex: "10",
+          },
+        '[aria-roledescription="carousel"] [aria-label*="revious"]': {
+          left: "0.5em",
+        },
+        '[aria-roledescription="carousel"] [aria-label*="ext"]': {
+          right: "0.5em",
+        },
+      },
+      example: [
+        {
+          title: "Basic Carousel",
+          description: "A simple image carousel with navigation buttons.",
+          preview: `<section aria-roledescription="carousel" aria-label="Featured images">
+  <div aria-live="polite">
+    <article aria-roledescription="slide" aria-label="Slide 1 of 3">
+      <img src="https://picsum.photos/400/200?random=1" alt="Sample image 1" style="width: 100%;">
+    </article>
+    <article aria-roledescription="slide" aria-label="Slide 2 of 3">
+      <img src="https://picsum.photos/400/200?random=2" alt="Sample image 2" style="width: 100%;">
+    </article>
+    <article aria-roledescription="slide" aria-label="Slide 3 of 3">
+      <img src="https://picsum.photos/400/200?random=3" alt="Sample image 3" style="width: 100%;">
+    </article>
+  </div>
+</section>`,
+          code: `<section aria-roledescription="carousel" aria-label="Featured">
+  <div aria-live="polite">
+    <article aria-roledescription="slide" aria-label="Slide 1">
+      <img src="..." alt="...">
+    </article>
+    <article aria-roledescription="slide" aria-label="Slide 2">
+      <img src="..." alt="...">
+    </article>
+  </div>
+</section>`,
+        },
+      ],
     },
     {
       title: "Checkbox",
       description: "A form control that allows users to select one or more options from a set.",
+      styles: {
+        'input[type="checkbox"]': {
+          appearance: "none",
+          width: "1.25em",
+          height: "1.25em",
+          border: "2px solid var(--surface_muted)",
+          borderRadius: "0.25em",
+          backgroundColor: "transparent",
+          cursor: "pointer",
+          verticalAlign: "middle",
+          position: "relative",
+          transition: "border-color 0.15s ease, background-color 0.15s ease",
+        },
+        'input[type="checkbox"]:checked': {
+          backgroundColor: "var(--surface_interactive)",
+          borderColor: "var(--surface_interactive)",
+        },
+        'input[type="checkbox"]:checked::after': {
+          content: '""',
+          position: "absolute",
+          left: "0.35em",
+          top: "0.15em",
+          width: "0.35em",
+          height: "0.6em",
+          border: "solid white",
+          borderWidth: "0 2px 2px 0",
+          transform: "rotate(45deg)",
+        },
+        'input[type="checkbox"]:focus-visible': {
+          outline: "2px solid var(--surface_interactive)",
+          outlineOffset: "2px",
+        },
+        'input[type="checkbox"]:disabled': {
+          opacity: "0.5",
+          cursor: "not-allowed",
+        },
+        'input[type="checkbox"][aria-invalid="true"]': {
+          borderColor: "var(--tone_error)",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          'input[type="checkbox"]': {
+            borderColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Checkbox States",
+          description: "Checkboxes in various states.",
+          preview: `<div style="display: flex; flex-direction: column; gap: 0.5em;">
+  <label><input type="checkbox"> Unchecked</label>
+  <label><input type="checkbox" checked> Checked</label>
+  <label><input type="checkbox" disabled> Disabled</label>
+  <label><input type="checkbox" checked disabled> Checked & Disabled</label>
+</div>`,
+          code: `<label><input type="checkbox"> Option</label>
+<label><input type="checkbox" checked> Selected</label>
+<label><input type="checkbox" disabled> Disabled</label>`,
+        },
+      ],
     },
     {
       title: "Combobox",
       description: "A composite widget combining a text input with a popup listbox for selecting values.",
+      styles: {
+        '[role="combobox"]': {
+          position: "relative",
+          display: "inline-block",
+        },
+        '[role="combobox"] input': {
+          width: "100%",
+        },
+        '[role="combobox"] [role="listbox"]': {
+          position: "absolute",
+          top: "100%",
+          left: "0",
+          right: "0",
+          maxHeight: "15em",
+          overflowY: "auto",
+          backgroundColor: "var(--surface_base)",
+          border: "1px solid var(--surface_muted)",
+          borderRadius: "0.375em",
+          boxShadow: "0 4px 12px oklch(0 0 0 / 0.1)",
+          zIndex: "100",
+          marginBlockStart: "0.25em",
+        },
+        '[role="combobox"] [role="listbox"][hidden]': {
+          display: "none",
+        },
+        '[role="combobox"] [role="option"]': {
+          padding: "0.5em 1em",
+          cursor: "pointer",
+        },
+        '[role="combobox"] [role="option"]:hover, [role="combobox"] [role="option"][aria-selected="true"]': {
+          backgroundColor: "var(--surface_raised)",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          '[role="combobox"] [role="listbox"]': {
+            backgroundColor: "var(--surface_raised_dark)",
+            borderColor: "var(--surface_border_dark)",
+          },
+          '[role="combobox"] [role="option"]:hover, [role="combobox"] [role="option"][aria-selected="true"]': {
+            backgroundColor: "var(--surface_overlay_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Basic Combobox",
+          description: "A text input with an associated listbox.",
+          preview: `<div role="combobox" aria-expanded="true" aria-haspopup="listbox">
+  <input type="text" placeholder="Select a fruit..." aria-autocomplete="list">
+  <ul role="listbox">
+    <li role="option">Apple</li>
+    <li role="option" aria-selected="true">Banana</li>
+    <li role="option">Cherry</li>
+    <li role="option">Date</li>
+  </ul>
+</div>`,
+          code: `<div role="combobox" aria-expanded="true" aria-haspopup="listbox">
+  <input type="text" aria-autocomplete="list">
+  <ul role="listbox">
+    <li role="option">Option 1</li>
+    <li role="option" aria-selected="true">Option 2</li>
+  </ul>
+</div>`,
+        },
+      ],
     },
     {
       title: "Dialog",
       description: "A modal or non-modal window that appears above the page content requiring user interaction.",
+      styles: {
+        dialog: {
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          maxWidth: "90vw",
+          maxHeight: "85vh",
+          padding: "1.5em",
+          backgroundColor: "var(--surface_base)",
+          border: "1px solid var(--surface_muted)",
+          borderRadius: "0.5em",
+          boxShadow: "0 8px 32px oklch(0 0 0 / 0.2)",
+          overflow: "auto",
+        },
+        "dialog::backdrop": {
+          backgroundColor: "var(--surface_backdrop)",
+        },
+        "dialog[open]": {
+          display: "block",
+        },
+        "dialog header": {
+          marginBlockEnd: "1em",
+          paddingBlockEnd: "0.75em",
+          borderBlockEnd: "1px solid var(--surface_muted)",
+        },
+        "dialog footer": {
+          marginBlockStart: "1.5em",
+          paddingBlockStart: "0.75em",
+          borderBlockStart: "1px solid var(--surface_muted)",
+          display: "flex",
+          gap: "0.5em",
+          justifyContent: "flex-end",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          dialog: {
+            backgroundColor: "var(--surface_raised_dark)",
+            borderColor: "var(--surface_border_dark)",
+          },
+          "dialog header, dialog footer": {
+            borderColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Basic Dialog",
+          description: "A modal dialog with header and footer.",
+          preview: `<dialog open>
+  <header>
+    <h3>Confirm Action</h3>
+  </header>
+  <p>Are you sure you want to proceed with this action?</p>
+  <footer>
+    <button data-variant="secondary">Cancel</button>
+    <button>Confirm</button>
+  </footer>
+</dialog>`,
+          code: `<dialog open>
+  <header><h3>Title</h3></header>
+  <p>Content...</p>
+  <footer>
+    <button data-variant="secondary">Cancel</button>
+    <button>Confirm</button>
+  </footer>
+</dialog>`,
+        },
+      ],
     },
     {
       title: "Disclosure",
       description: "A button that controls the visibility of a section of content.",
+      styles: {
+        "details:not([name])": {
+          border: "1px solid var(--surface_muted)",
+          borderRadius: "0.5em",
+          overflow: "hidden",
+        },
+        "details:not([name]) > summary": {
+          padding: "0.75em 1em",
+          fontWeight: "500",
+          cursor: "pointer",
+          listStyle: "none",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        },
+        "details:not([name]) > summary::-webkit-details-marker": {
+          display: "none",
+        },
+        "details:not([name]) > summary::after": {
+          content: '"▸"',
+          transition: "transform 0.2s ease",
+        },
+        "details:not([name])[open] > summary::after": {
+          transform: "rotate(90deg)",
+        },
+        "details:not([name]) > :not(summary)": {
+          padding: "0 1em",
+        },
+        "details:not([name]) > :last-child": {
+          paddingBlockEnd: "1em",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          "details:not([name])": {
+            borderColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Basic Disclosure",
+          description: "A collapsible section using the native details/summary elements.",
+          preview: `<details>
+  <summary>Click to reveal more information</summary>
+  <p>This content is hidden by default and revealed when the summary is clicked.</p>
+  <p>You can include any content here.</p>
+</details>`,
+          code: `<details>
+  <summary>Toggle content</summary>
+  <p>Hidden content...</p>
+</details>`,
+        },
+        {
+          title: "Disclosure (Open by Default)",
+          description: "A disclosure that starts in the open state.",
+          preview: `<details open>
+  <summary>Already expanded</summary>
+  <p>This content is visible by default because the open attribute is present.</p>
+</details>`,
+          code: `<details open>
+  <summary>Expanded</summary>
+  <p>Visible content...</p>
+</details>`,
+        },
+      ],
     },
     {
       title: "Feed",
       description: "A scrollable list of articles where new content may be added as the user scrolls.",
+      styles: {
+        '[role="feed"]': {
+          display: "flex",
+          flexDirection: "column",
+          gap: "1em",
+        },
+        '[role="feed"] article': {
+          padding: "1em",
+          border: "1px solid var(--surface_muted)",
+          borderRadius: "0.5em",
+        },
+        '[role="feed"] article:focus-within': {
+          outline: "2px solid var(--surface_interactive)",
+          outlineOffset: "2px",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          '[role="feed"] article': {
+            borderColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Basic Feed",
+          description: "A feed of articles with proper ARIA attributes.",
+          preview: `<section role="feed" aria-label="News feed">
+  <article aria-posinset="1" aria-setsize="3" tabindex="0">
+    <h4>First Article</h4>
+    <p>Content of the first article...</p>
+  </article>
+  <article aria-posinset="2" aria-setsize="3" tabindex="0">
+    <h4>Second Article</h4>
+    <p>Content of the second article...</p>
+  </article>
+  <article aria-posinset="3" aria-setsize="3" tabindex="0">
+    <h4>Third Article</h4>
+    <p>Content of the third article...</p>
+  </article>
+</section>`,
+          code: `<section role="feed" aria-label="Feed">
+  <article aria-posinset="1" aria-setsize="-1" tabindex="0">
+    <h4>Article Title</h4>
+    <p>Content...</p>
+  </article>
+</section>`,
+        },
+      ],
     },
     {
       title: "Grid",
       description: "An interactive two-dimensional data structure with rows and columns of cells.",
+      styles: {
+        '[role="grid"]': {
+          display: "grid",
+          gap: "1px",
+          backgroundColor: "var(--surface_muted)",
+          border: "1px solid var(--surface_muted)",
+          borderRadius: "0.5em",
+          overflow: "hidden",
+        },
+        '[role="grid"] [role="row"]': {
+          display: "contents",
+        },
+        '[role="grid"] [role="gridcell"], [role="grid"] [role="columnheader"], [role="grid"] [role="rowheader"]': {
+          padding: "0.75em 1em",
+          backgroundColor: "var(--surface_base)",
+        },
+        '[role="grid"] [role="columnheader"], [role="grid"] [role="rowheader"]': {
+          fontWeight: "600",
+          backgroundColor: "var(--surface_raised)",
+        },
+        '[role="grid"] [role="gridcell"]:focus, [role="grid"] [role="columnheader"]:focus, [role="grid"] [role="rowheader"]:focus':
+          {
+            outline: "2px solid var(--surface_interactive)",
+            outlineOffset: "-2px",
+          },
+        '[role="grid"] [role="gridcell"][aria-selected="true"]': {
+          backgroundColor: "var(--surface_highlight)",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          '[role="grid"]': {
+            backgroundColor: "var(--surface_border_dark)",
+            borderColor: "var(--surface_border_dark)",
+          },
+          '[role="grid"] [role="gridcell"], [role="grid"] [role="columnheader"], [role="grid"] [role="rowheader"]': {
+            backgroundColor: "var(--surface_base_dark)",
+          },
+          '[role="grid"] [role="columnheader"], [role="grid"] [role="rowheader"]': {
+            backgroundColor: "var(--surface_raised_dark)",
+          },
+          '[role="grid"] [role="gridcell"][aria-selected="true"]': {
+            backgroundColor: "var(--surface_highlight_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Basic Grid",
+          description: "An interactive grid with keyboard navigation support.",
+          preview: `<div role="grid" aria-label="Sample data" style="grid-template-columns: repeat(3, 1fr);">
+  <div role="row">
+    <div role="columnheader">Name</div>
+    <div role="columnheader">Email</div>
+    <div role="columnheader">Role</div>
+  </div>
+  <div role="row">
+    <div role="gridcell" tabindex="0">Alice</div>
+    <div role="gridcell">alice@example.com</div>
+    <div role="gridcell">Admin</div>
+  </div>
+  <div role="row">
+    <div role="gridcell" tabindex="-1">Bob</div>
+    <div role="gridcell">bob@example.com</div>
+    <div role="gridcell">User</div>
+  </div>
+</div>`,
+          code: `<div role="grid" aria-label="Data" style="grid-template-columns: repeat(3, 1fr);">
+  <div role="row">
+    <div role="columnheader">Header</div>
+  </div>
+  <div role="row">
+    <div role="gridcell" tabindex="0">Cell</div>
+  </div>
+</div>`,
+        },
+      ],
     },
     {
       title: "Header",
       description: "A container for introductory content or navigational aids at the top of a page or section.",
+      styles: {
+        header: {
+          marginBlockEnd: "2em",
+        },
+        "header > :first-child": {
+          marginBlockStart: "0",
+        },
+        "header > :last-child": {
+          marginBlockEnd: "0",
+        },
+        "article header, section header": {
+          marginBlockEnd: "1em",
+          paddingBlockEnd: "0.75em",
+          borderBlockEnd: "1px solid var(--surface_muted)",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          "article header, section header": {
+            borderColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Page Header",
+          description: "A header element at the top of a page.",
+          preview: `<header>
+  <h1>Page Title</h1>
+  <p>A brief description of the page content.</p>
+</header>`,
+          code: `<header>
+  <h1>Title</h1>
+  <p>Description</p>
+</header>`,
+        },
+      ],
     },
     {
       title: "Landmarks",
       description: "Semantic regions that help assistive technology users navigate and understand page structure.",
+      styles: {
+        main: {
+          display: "block",
+          marginBlock: "2em",
+        },
+        "aside:not(article aside)": {
+          padding: "1em",
+          borderInlineStart: "3px solid var(--surface_interactive)",
+          backgroundColor: "var(--surface_raised)",
+          borderRadius: "0 0.5em 0.5em 0",
+          marginBlock: "1em",
+        },
+        footer: {
+          marginBlockStart: "2em",
+          paddingBlockStart: "1em",
+          borderBlockStart: "1px solid var(--surface_muted)",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          "aside:not(article aside)": {
+            backgroundColor: "var(--surface_raised_dark)",
+          },
+          footer: {
+            borderColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Page Landmarks",
+          description: "Semantic landmark elements for page structure.",
+          preview: `<div style="border: 1px dashed var(--surface_muted); padding: 1em;">
+  <header style="padding: 0.5em; background: var(--surface_raised);">
+    &lt;header&gt; - Page header
+  </header>
+  <nav style="padding: 0.5em; background: var(--surface_overlay); margin-block: 0.5em;">
+    &lt;nav&gt; - Navigation
+  </nav>
+  <main style="padding: 0.5em; background: var(--surface_raised);">
+    &lt;main&gt; - Main content
+    <aside style="margin: 0.5em 0;">
+      &lt;aside&gt; - Sidebar
+    </aside>
+  </main>
+  <footer style="padding: 0.5em; background: var(--surface_overlay);">
+    &lt;footer&gt; - Page footer
+  </footer>
+</div>`,
+          code: `<header>Site header</header>
+<nav>Navigation</nav>
+<main>
+  <aside>Sidebar</aside>
+  Main content
+</main>
+<footer>Footer</footer>`,
+        },
+      ],
     },
     {
       title: "Link",
       description: "An interactive reference to a resource that navigates the user when activated.",
+      styles: {
+        'a[aria-disabled="true"]': {
+          opacity: "0.5",
+          pointerEvents: "none",
+          cursor: "not-allowed",
+        },
+        "a[download]::after": {
+          content: '" ⬇"',
+          fontSize: "0.8em",
+        },
+        'a[target="_blank"]::after': {
+          content: '" ↗"',
+          fontSize: "0.8em",
+        },
+      },
+      example: [
+        {
+          title: "Link Variants",
+          description: "Different link states and types.",
+          preview: `<div style="display: flex; flex-direction: column; gap: 0.5em;">
+  <a href="#">Standard Link</a>
+  <a href="#" aria-current="page">Current Page</a>
+  <a href="#" aria-disabled="true">Disabled Link</a>
+  <a href="#" target="_blank">External Link</a>
+  <a href="#" download>Download Link</a>
+</div>`,
+          code: `<a href="#">Link</a>
+<a href="#" aria-current="page">Current</a>
+<a href="#" aria-disabled="true">Disabled</a>
+<a href="#" target="_blank">External</a>
+<a href="#" download>Download</a>`,
+        },
+      ],
     },
     {
       title: "Listbox",
       description: "A widget that allows users to select one or more items from a list of choices.",
+      styles: {
+        '[role="listbox"]': {
+          border: "1px solid var(--surface_muted)",
+          borderRadius: "0.5em",
+          overflow: "hidden",
+          maxHeight: "15em",
+          overflowY: "auto",
+        },
+        '[role="listbox"] [role="option"]': {
+          padding: "0.625em 1em",
+          cursor: "pointer",
+          transition: "background-color 0.1s ease",
+        },
+        '[role="listbox"] [role="option"]:hover': {
+          backgroundColor: "var(--surface_raised)",
+        },
+        '[role="listbox"] [role="option"][aria-selected="true"]': {
+          backgroundColor: "var(--surface_interactive)",
+          color: "var(--text_color_inverse)",
+        },
+        '[role="listbox"] [role="option"]:focus': {
+          outline: "2px solid var(--surface_interactive)",
+          outlineOffset: "-2px",
+        },
+        '[role="listbox"] [role="option"][aria-disabled="true"]': {
+          opacity: "0.5",
+          cursor: "not-allowed",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          '[role="listbox"]': {
+            borderColor: "var(--surface_border_dark)",
+          },
+          '[role="listbox"] [role="option"]:hover': {
+            backgroundColor: "var(--surface_overlay_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Single Select Listbox",
+          description: "A listbox for selecting a single option.",
+          preview: `<ul role="listbox" aria-label="Select a color">
+  <li role="option" aria-selected="false" tabindex="0">Red</li>
+  <li role="option" aria-selected="true" tabindex="-1">Green</li>
+  <li role="option" aria-selected="false" tabindex="-1">Blue</li>
+  <li role="option" aria-disabled="true" tabindex="-1">Yellow (unavailable)</li>
+</ul>`,
+          code: `<ul role="listbox" aria-label="Options">
+  <li role="option" aria-selected="false" tabindex="0">Option 1</li>
+  <li role="option" aria-selected="true" tabindex="-1">Option 2</li>
+</ul>`,
+        },
+      ],
     },
     {
       title: "Menu",
@@ -3039,26 +3872,398 @@ Line 2
     {
       title: "Meter",
       description: "A graphical display of a numeric value within a known range.",
+      styles: {
+        meter: {
+          width: "100%",
+          height: "1em",
+          appearance: "none",
+          backgroundColor: "var(--surface_muted)",
+          borderRadius: "0.5em",
+          overflow: "hidden",
+        },
+        "meter::-webkit-meter-bar": {
+          backgroundColor: "var(--surface_muted)",
+          borderRadius: "0.5em",
+        },
+        "meter::-webkit-meter-optimum-value": {
+          backgroundColor: "var(--tone_success)",
+          borderRadius: "0.5em",
+        },
+        "meter::-webkit-meter-suboptimum-value": {
+          backgroundColor: "var(--tone_warning)",
+          borderRadius: "0.5em",
+        },
+        "meter::-webkit-meter-even-less-good-value": {
+          backgroundColor: "var(--tone_error)",
+          borderRadius: "0.5em",
+        },
+        "meter::-moz-meter-bar": {
+          borderRadius: "0.5em",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          meter: {
+            backgroundColor: "var(--surface_border_dark)",
+          },
+          "meter::-webkit-meter-bar": {
+            backgroundColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Meter States",
+          description: "Meters showing different value ranges.",
+          preview: `<div style="display: flex; flex-direction: column; gap: 1em;">
+  <label>Storage (optimal): <meter value="0.3" min="0" max="1" low="0.25" high="0.75" optimum="0.1"></meter></label>
+  <label>Memory (suboptimal): <meter value="0.7" min="0" max="1" low="0.25" high="0.75" optimum="0.1"></meter></label>
+  <label>CPU (critical): <meter value="0.95" min="0" max="1" low="0.25" high="0.75" optimum="0.1"></meter></label>
+</div>`,
+          code: `<meter value="0.5" min="0" max="1" low="0.25" high="0.75" optimum="0.5">50%</meter>`,
+        },
+      ],
     },
     {
       title: "Radio",
       description: "A group of mutually exclusive options where only one can be selected at a time.",
+      styles: {
+        'input[type="radio"]': {
+          appearance: "none",
+          width: "1.25em",
+          height: "1.25em",
+          border: "2px solid var(--surface_muted)",
+          borderRadius: "50%",
+          backgroundColor: "transparent",
+          cursor: "pointer",
+          verticalAlign: "middle",
+          position: "relative",
+          transition: "border-color 0.15s ease",
+        },
+        'input[type="radio"]:checked': {
+          borderColor: "var(--surface_interactive)",
+        },
+        'input[type="radio"]:checked::after': {
+          content: '""',
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "0.5em",
+          height: "0.5em",
+          borderRadius: "50%",
+          backgroundColor: "var(--surface_interactive)",
+        },
+        'input[type="radio"]:focus-visible': {
+          outline: "2px solid var(--surface_interactive)",
+          outlineOffset: "2px",
+        },
+        'input[type="radio"]:disabled': {
+          opacity: "0.5",
+          cursor: "not-allowed",
+        },
+        '[role="radiogroup"]': {
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.5em",
+        },
+        '[role="radiogroup"][aria-orientation="horizontal"]': {
+          flexDirection: "row",
+          flexWrap: "wrap",
+          gap: "1em",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          'input[type="radio"]': {
+            borderColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Radio Group",
+          description: "A group of radio buttons for single selection.",
+          preview: `<fieldset role="radiogroup" aria-label="Favorite color">
+  <legend>Choose a color:</legend>
+  <label><input type="radio" name="color" value="red"> Red</label>
+  <label><input type="radio" name="color" value="green" checked> Green</label>
+  <label><input type="radio" name="color" value="blue"> Blue</label>
+  <label><input type="radio" name="color" value="yellow" disabled> Yellow (unavailable)</label>
+</fieldset>`,
+          code: `<fieldset role="radiogroup">
+  <legend>Options:</legend>
+  <label><input type="radio" name="option"> Option 1</label>
+  <label><input type="radio" name="option" checked> Option 2</label>
+</fieldset>`,
+        },
+      ],
     },
     {
       title: "Slider",
       description: "An input control that allows users to select a value from a range by dragging a thumb.",
+      styles: {
+        'input[type="range"]': {
+          appearance: "none",
+          width: "100%",
+          height: "0.5em",
+          backgroundColor: "var(--surface_muted)",
+          borderRadius: "0.25em",
+          cursor: "pointer",
+        },
+        'input[type="range"]::-webkit-slider-thumb': {
+          appearance: "none",
+          width: "1.25em",
+          height: "1.25em",
+          backgroundColor: "var(--surface_interactive)",
+          borderRadius: "50%",
+          cursor: "grab",
+          transition: "transform 0.1s ease",
+        },
+        'input[type="range"]::-moz-range-thumb': {
+          width: "1.25em",
+          height: "1.25em",
+          backgroundColor: "var(--surface_interactive)",
+          border: "none",
+          borderRadius: "50%",
+          cursor: "grab",
+        },
+        'input[type="range"]::-webkit-slider-thumb:active': {
+          cursor: "grabbing",
+          transform: "scale(1.1)",
+        },
+        'input[type="range"]:focus-visible': {
+          outline: "2px solid var(--surface_interactive)",
+          outlineOffset: "4px",
+        },
+        'input[type="range"]:disabled': {
+          opacity: "0.5",
+          cursor: "not-allowed",
+        },
+        'input[type="range"]:disabled::-webkit-slider-thumb': {
+          cursor: "not-allowed",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          'input[type="range"]': {
+            backgroundColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Range Slider",
+          description: "A slider for selecting a value within a range.",
+          preview: `<div style="display: flex; flex-direction: column; gap: 1em;">
+  <label>Volume: <input type="range" min="0" max="100" value="50"></label>
+  <label>Brightness: <input type="range" min="0" max="100" value="75"></label>
+  <label>Disabled: <input type="range" min="0" max="100" value="25" disabled></label>
+</div>`,
+          code: `<label>Value: <input type="range" min="0" max="100" value="50"></label>`,
+        },
+      ],
     },
     {
       title: "Spinbutton",
       description: "A numeric input field with increment and decrement buttons for adjusting values.",
+      styles: {
+        'input[type="number"]': {
+          appearance: "textfield",
+          padding: "0.5em 0.75em",
+          border: "1px solid var(--surface_muted)",
+          borderRadius: "0.375em",
+          backgroundColor: "transparent",
+          fontSize: "inherit",
+          fontFamily: "inherit",
+        },
+        'input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button': {
+          opacity: "1",
+          height: "1.5em",
+        },
+        'input[type="number"]:focus': {
+          outline: "2px solid var(--surface_interactive)",
+          outlineOffset: "-1px",
+          borderColor: "var(--surface_interactive)",
+        },
+        'input[type="number"]:disabled': {
+          opacity: "0.5",
+          cursor: "not-allowed",
+        },
+        '[role="spinbutton"]': {
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "0.25em",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          'input[type="number"]': {
+            borderColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Number Input",
+          description: "A numeric input with spin buttons.",
+          preview: `<div style="display: flex; flex-direction: column; gap: 1em;">
+  <label>Quantity: <input type="number" min="0" max="100" value="1"></label>
+  <label>Price: <input type="number" min="0" step="0.01" value="9.99"></label>
+  <label>Disabled: <input type="number" value="5" disabled></label>
+</div>`,
+          code: `<label>Value: <input type="number" min="0" max="100" value="1"></label>`,
+        },
+      ],
     },
     {
       title: "Switch",
       description: "A toggle control that represents an on/off or enabled/disabled state.",
+      styles: {
+        '[role="switch"]': {
+          position: "relative",
+          display: "inline-flex",
+          alignItems: "center",
+          width: "2.5em",
+          height: "1.5em",
+          backgroundColor: "var(--surface_muted)",
+          borderRadius: "1em",
+          cursor: "pointer",
+          transition: "background-color 0.2s ease",
+        },
+        '[role="switch"]::before': {
+          content: '""',
+          position: "absolute",
+          left: "0.2em",
+          width: "1.1em",
+          height: "1.1em",
+          backgroundColor: "white",
+          borderRadius: "50%",
+          transition: "transform 0.2s ease",
+          boxShadow: "0 1px 3px oklch(0 0 0 / 0.2)",
+        },
+        '[role="switch"][aria-checked="true"]': {
+          backgroundColor: "var(--surface_interactive)",
+        },
+        '[role="switch"][aria-checked="true"]::before': {
+          transform: "translateX(1em)",
+        },
+        '[role="switch"]:focus-visible': {
+          outline: "2px solid var(--surface_interactive)",
+          outlineOffset: "2px",
+        },
+        '[role="switch"][aria-disabled="true"]': {
+          opacity: "0.5",
+          cursor: "not-allowed",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          '[role="switch"]': {
+            backgroundColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Switch Toggle",
+          description: "Toggle switches for on/off states.",
+          preview: `<div style="display: flex; flex-direction: column; gap: 1em;">
+  <label style="display: flex; align-items: center; gap: 0.75em;">
+    <span role="switch" aria-checked="false" tabindex="0"></span>
+    Off
+  </label>
+  <label style="display: flex; align-items: center; gap: 0.75em;">
+    <span role="switch" aria-checked="true" tabindex="0"></span>
+    On
+  </label>
+  <label style="display: flex; align-items: center; gap: 0.75em;">
+    <span role="switch" aria-checked="false" aria-disabled="true" tabindex="-1"></span>
+    Disabled
+  </label>
+</div>`,
+          code: `<span role="switch" aria-checked="false" tabindex="0"></span>
+<span role="switch" aria-checked="true" tabindex="0"></span>`,
+        },
+      ],
     },
     {
       title: "Table",
       description: "A structured grid of data organized in rows and columns for displaying information.",
+      styles: {
+        table: {
+          width: "100%",
+          borderCollapse: "collapse",
+          textAlign: "left",
+        },
+        "th, td": {
+          padding: "0.75em 1em",
+          borderBlockEnd: "1px solid var(--surface_muted)",
+        },
+        th: {
+          fontWeight: "600",
+          backgroundColor: "var(--surface_raised)",
+        },
+        "thead th": {
+          borderBlockEnd: "2px solid var(--surface_muted)",
+        },
+        "tbody tr:hover": {
+          backgroundColor: "var(--surface_raised)",
+        },
+        "tfoot td": {
+          fontWeight: "500",
+          borderBlockStart: "2px solid var(--surface_muted)",
+          borderBlockEnd: "none",
+        },
+        "table caption": {
+          textAlign: "left",
+          fontWeight: "600",
+          marginBlockEnd: "0.5em",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          "th, td": {
+            borderColor: "var(--surface_border_dark)",
+          },
+          th: {
+            backgroundColor: "var(--surface_raised_dark)",
+          },
+          "tbody tr:hover": {
+            backgroundColor: "var(--surface_overlay_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Basic Table",
+          description: "A data table with headers and rows.",
+          preview: `<table>
+  <caption>User Data</caption>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alice Johnson</td>
+      <td>alice@example.com</td>
+      <td>Admin</td>
+    </tr>
+    <tr>
+      <td>Bob Smith</td>
+      <td>bob@example.com</td>
+      <td>User</td>
+    </tr>
+    <tr>
+      <td>Carol White</td>
+      <td>carol@example.com</td>
+      <td>Moderator</td>
+    </tr>
+  </tbody>
+</table>`,
+          code: `<table>
+  <caption>Title</caption>
+  <thead>
+    <tr><th>Header</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Cell</td></tr>
+  </tbody>
+</table>`,
+        },
+      ],
     },
     {
       title: "Tabs",
@@ -3308,22 +4513,405 @@ Line 2
     {
       title: "Toolbar",
       description: "A container for grouping related controls such as buttons and menu items.",
+      styles: {
+        '[role="toolbar"]': {
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5em",
+          padding: "0.5em",
+          backgroundColor: "var(--surface_raised)",
+          borderRadius: "0.5em",
+          flexWrap: "wrap",
+        },
+        '[role="toolbar"][aria-orientation="vertical"]': {
+          flexDirection: "column",
+          width: "fit-content",
+        },
+        '[role="toolbar"] [role="separator"]': {
+          width: "1px",
+          height: "1.5em",
+          backgroundColor: "var(--surface_muted)",
+          margin: "0 0.25em",
+        },
+        '[role="toolbar"][aria-orientation="vertical"] [role="separator"]': {
+          width: "100%",
+          height: "1px",
+          margin: "0.25em 0",
+        },
+        '[role="toolbar"] [role="group"]': {
+          display: "flex",
+          alignItems: "center",
+          gap: "0.25em",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          '[role="toolbar"]': {
+            backgroundColor: "var(--surface_raised_dark)",
+          },
+          '[role="toolbar"] [role="separator"]': {
+            backgroundColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Basic Toolbar",
+          description: "A horizontal toolbar with grouped controls.",
+          preview: `<div role="toolbar" aria-label="Text formatting">
+  <div role="group" aria-label="Text style">
+    <button data-variant="ghost">B</button>
+    <button data-variant="ghost">I</button>
+    <button data-variant="ghost">U</button>
+  </div>
+  <span role="separator"></span>
+  <div role="group" aria-label="Alignment">
+    <button data-variant="ghost">Left</button>
+    <button data-variant="ghost">Center</button>
+    <button data-variant="ghost">Right</button>
+  </div>
+  <span role="separator"></span>
+  <button data-variant="ghost">Link</button>
+</div>`,
+          code: `<div role="toolbar" aria-label="Actions">
+  <div role="group" aria-label="Group 1">
+    <button>Action 1</button>
+    <button>Action 2</button>
+  </div>
+  <span role="separator"></span>
+  <button>Action 3</button>
+</div>`,
+        },
+        {
+          title: "Vertical Toolbar",
+          description: "A vertical toolbar using aria-orientation.",
+          preview: `<div role="toolbar" aria-label="Tools" aria-orientation="vertical">
+  <button data-variant="ghost">Select</button>
+  <button data-variant="ghost">Move</button>
+  <span role="separator"></span>
+  <button data-variant="ghost">Draw</button>
+  <button data-variant="ghost">Erase</button>
+</div>`,
+          code: `<div role="toolbar" aria-orientation="vertical">
+  <button>Tool 1</button>
+  <button>Tool 2</button>
+</div>`,
+        },
+      ],
     },
     {
       title: "Tooltip",
       description: "A contextual popup that displays descriptive information about an element on hover or focus.",
+      styles: {
+        "[data-tooltip]": {
+          position: "relative",
+        },
+        "[data-tooltip]::after": {
+          content: "attr(data-tooltip)",
+          position: "absolute",
+          bottom: "100%",
+          left: "50%",
+          transform: "translateX(-50%) translateY(-0.5em)",
+          padding: "0.5em 0.75em",
+          backgroundColor: "var(--surface_base_dark)",
+          color: "var(--text_color_primary)",
+          fontSize: "0.875em",
+          borderRadius: "0.375em",
+          whiteSpace: "nowrap",
+          opacity: "0",
+          visibility: "hidden",
+          transition: "opacity 0.15s ease, visibility 0.15s ease",
+          zIndex: "1000",
+          pointerEvents: "none",
+        },
+        "[data-tooltip]:hover::after, [data-tooltip]:focus::after": {
+          opacity: "1",
+          visibility: "visible",
+        },
+        '[data-tooltip][data-tooltip-position="bottom"]::after': {
+          bottom: "auto",
+          top: "100%",
+          transform: "translateX(-50%) translateY(0.5em)",
+        },
+        '[data-tooltip][data-tooltip-position="left"]::after': {
+          bottom: "auto",
+          top: "50%",
+          left: "auto",
+          right: "100%",
+          transform: "translateY(-50%) translateX(-0.5em)",
+        },
+        '[data-tooltip][data-tooltip-position="right"]::after': {
+          bottom: "auto",
+          top: "50%",
+          left: "100%",
+          transform: "translateY(-50%) translateX(0.5em)",
+        },
+        '[role="tooltip"]': {
+          position: "absolute",
+          padding: "0.5em 0.75em",
+          backgroundColor: "var(--surface_base_dark)",
+          color: "var(--text_color_primary)",
+          fontSize: "0.875em",
+          borderRadius: "0.375em",
+          whiteSpace: "nowrap",
+          zIndex: "1000",
+        },
+      },
+      example: [
+        {
+          title: "Data Attribute Tooltip",
+          description: "CSS-only tooltips using data-tooltip attribute.",
+          preview: `<div style="display: flex; gap: 2em; padding: 2em;">
+  <button data-tooltip="Save your changes">Save</button>
+  <button data-tooltip="Delete this item" data-tooltip-position="bottom">Delete</button>
+  <button data-tooltip="Edit content" data-tooltip-position="right">Edit</button>
+</div>`,
+          code: `<button data-tooltip="Tooltip text">Hover me</button>
+<button data-tooltip="Bottom tooltip" data-tooltip-position="bottom">Bottom</button>`,
+        },
+        {
+          title: "ARIA Tooltip",
+          description: "Tooltip with proper ARIA role for accessibility.",
+          preview: `<div style="position: relative; display: inline-block;">
+  <button aria-describedby="tooltip1">Hover for info</button>
+  <span role="tooltip" id="tooltip1" style="top: 100%; left: 50%; transform: translateX(-50%); margin-top: 0.5em;">
+    Additional information about this button
+  </span>
+</div>`,
+          code: `<button aria-describedby="my-tooltip">Trigger</button>
+<span role="tooltip" id="my-tooltip">Tooltip content</span>`,
+        },
+      ],
     },
     {
       title: "Treegrid",
       description: "A grid widget that combines the features of a tree and a data grid.",
+      styles: {
+        '[role="treegrid"]': {
+          display: "table",
+          width: "100%",
+          borderCollapse: "collapse",
+        },
+        '[role="treegrid"] [role="row"]': {
+          display: "table-row",
+        },
+        '[role="treegrid"] [role="gridcell"], [role="treegrid"] [role="columnheader"]': {
+          display: "table-cell",
+          padding: "0.75em 1em",
+          borderBlockEnd: "1px solid var(--surface_muted)",
+        },
+        '[role="treegrid"] [role="columnheader"]': {
+          fontWeight: "600",
+          backgroundColor: "var(--surface_raised)",
+        },
+        '[role="treegrid"] [role="row"][aria-level="2"] [role="gridcell"]:first-child': {
+          paddingInlineStart: "2em",
+        },
+        '[role="treegrid"] [role="row"][aria-level="3"] [role="gridcell"]:first-child': {
+          paddingInlineStart: "3em",
+        },
+        '[role="treegrid"] [role="row"][aria-expanded]::before': {
+          content: '"▸"',
+          display: "inline-block",
+          marginInlineEnd: "0.5em",
+          transition: "transform 0.2s ease",
+        },
+        '[role="treegrid"] [role="row"][aria-expanded="true"]::before': {
+          transform: "rotate(90deg)",
+        },
+        '[role="treegrid"] [role="row"]:focus-within': {
+          backgroundColor: "var(--surface_raised)",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          '[role="treegrid"] [role="gridcell"], [role="treegrid"] [role="columnheader"]': {
+            borderColor: "var(--surface_border_dark)",
+          },
+          '[role="treegrid"] [role="columnheader"]': {
+            backgroundColor: "var(--surface_raised_dark)",
+          },
+          '[role="treegrid"] [role="row"]:focus-within': {
+            backgroundColor: "var(--surface_overlay_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Basic Treegrid",
+          description: "A hierarchical data grid with expandable rows.",
+          preview: `<div role="treegrid" aria-label="File browser">
+  <div role="row">
+    <span role="columnheader">Name</span>
+    <span role="columnheader">Size</span>
+    <span role="columnheader">Modified</span>
+  </div>
+  <div role="row" aria-level="1" aria-expanded="true" tabindex="0">
+    <span role="gridcell">Documents</span>
+    <span role="gridcell">—</span>
+    <span role="gridcell">Today</span>
+  </div>
+  <div role="row" aria-level="2" tabindex="-1">
+    <span role="gridcell">Report.pdf</span>
+    <span role="gridcell">2.4 MB</span>
+    <span role="gridcell">Yesterday</span>
+  </div>
+  <div role="row" aria-level="2" tabindex="-1">
+    <span role="gridcell">Notes.txt</span>
+    <span role="gridcell">12 KB</span>
+    <span role="gridcell">Last week</span>
+  </div>
+</div>`,
+          code: `<div role="treegrid">
+  <div role="row" aria-level="1" aria-expanded="true">
+    <span role="gridcell">Parent</span>
+  </div>
+  <div role="row" aria-level="2">
+    <span role="gridcell">Child</span>
+  </div>
+</div>`,
+        },
+      ],
     },
     {
       title: "Treeview",
       description: "A hierarchical list that can have nested groups of items that can be expanded or collapsed.",
+      styles: {
+        '[role="tree"]': {
+          listStyle: "none",
+          margin: "0",
+          padding: "0",
+        },
+        '[role="tree"] [role="group"]': {
+          listStyle: "none",
+          margin: "0",
+          paddingInlineStart: "1.5em",
+        },
+        '[role="tree"] [role="treeitem"]': {
+          padding: "0.375em 0.5em",
+          cursor: "pointer",
+          borderRadius: "0.25em",
+        },
+        '[role="tree"] [role="treeitem"]:hover': {
+          backgroundColor: "var(--surface_raised)",
+        },
+        '[role="tree"] [role="treeitem"]:focus': {
+          outline: "2px solid var(--surface_interactive)",
+          outlineOffset: "-2px",
+        },
+        '[role="tree"] [role="treeitem"][aria-selected="true"]': {
+          backgroundColor: "var(--surface_interactive)",
+          color: "var(--text_color_inverse)",
+        },
+        '[role="tree"] [role="treeitem"][aria-expanded]::before': {
+          content: '"▸"',
+          display: "inline-block",
+          marginInlineEnd: "0.5em",
+          transition: "transform 0.2s ease",
+        },
+        '[role="tree"] [role="treeitem"][aria-expanded="true"]::before': {
+          transform: "rotate(90deg)",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          '[role="tree"] [role="treeitem"]:hover': {
+            backgroundColor: "var(--surface_overlay_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Basic Treeview",
+          description: "A hierarchical tree with expandable nodes.",
+          preview: `<ul role="tree" aria-label="File system">
+  <li role="treeitem" aria-expanded="true" tabindex="0">
+    Documents
+    <ul role="group">
+      <li role="treeitem" aria-expanded="false" tabindex="-1">
+        Work
+        <ul role="group">
+          <li role="treeitem" tabindex="-1">Report.docx</li>
+          <li role="treeitem" tabindex="-1">Presentation.pptx</li>
+        </ul>
+      </li>
+      <li role="treeitem" tabindex="-1">Personal</li>
+    </ul>
+  </li>
+  <li role="treeitem" aria-expanded="false" tabindex="-1">
+    Pictures
+    <ul role="group">
+      <li role="treeitem" tabindex="-1">Vacation</li>
+      <li role="treeitem" tabindex="-1">Family</li>
+    </ul>
+  </li>
+  <li role="treeitem" aria-selected="true" tabindex="-1">Downloads</li>
+</ul>`,
+          code: `<ul role="tree">
+  <li role="treeitem" aria-expanded="true" tabindex="0">
+    Parent
+    <ul role="group">
+      <li role="treeitem" tabindex="-1">Child</li>
+    </ul>
+  </li>
+</ul>`,
+        },
+      ],
     },
     {
       title: "Window Splitter",
       description: "A movable divider that separates two sections and allows resizing them.",
+      styles: {
+        '[role="separator"][aria-orientation="vertical"]': {
+          width: "4px",
+          backgroundColor: "var(--surface_muted)",
+          cursor: "col-resize",
+          transition: "background-color 0.15s ease",
+          flexShrink: "0",
+        },
+        '[role="separator"]:not([aria-orientation]), [role="separator"][aria-orientation="horizontal"]': {
+          height: "4px",
+          backgroundColor: "var(--surface_muted)",
+          cursor: "row-resize",
+          transition: "background-color 0.15s ease",
+          flexShrink: "0",
+        },
+        '[role="separator"]:hover, [role="separator"]:focus': {
+          backgroundColor: "var(--surface_interactive)",
+        },
+        '[role="separator"]:focus': {
+          outline: "none",
+        },
+        "@media (prefers-color-scheme: dark)": {
+          '[role="separator"]': {
+            backgroundColor: "var(--surface_border_dark)",
+          },
+        },
+      },
+      example: [
+        {
+          title: "Horizontal Splitter",
+          description: "A vertical divider between two horizontal panes.",
+          preview: `<div style="display: flex; height: 150px; border: 1px solid var(--surface_muted); border-radius: 0.5em; overflow: hidden;">
+  <div style="flex: 1; padding: 1em; background: var(--surface_raised);">Left Pane</div>
+  <div role="separator" aria-orientation="vertical" aria-valuenow="50" tabindex="0"></div>
+  <div style="flex: 1; padding: 1em;">Right Pane</div>
+</div>`,
+          code: `<div style="display: flex;">
+  <div>Left</div>
+  <div role="separator" aria-orientation="vertical" tabindex="0"></div>
+  <div>Right</div>
+</div>`,
+        },
+        {
+          title: "Vertical Splitter",
+          description: "A horizontal divider between two vertical panes.",
+          preview: `<div style="display: flex; flex-direction: column; height: 200px; border: 1px solid var(--surface_muted); border-radius: 0.5em; overflow: hidden;">
+  <div style="flex: 1; padding: 1em; background: var(--surface_raised);">Top Pane</div>
+  <div role="separator" aria-orientation="horizontal" aria-valuenow="50" tabindex="0"></div>
+  <div style="flex: 1; padding: 1em;">Bottom Pane</div>
+</div>`,
+          code: `<div style="display: flex; flex-direction: column;">
+  <div>Top</div>
+  <div role="separator" aria-orientation="horizontal" tabindex="0"></div>
+  <div>Bottom</div>
+</div>`,
+        },
+      ],
     },
   ],
 };
