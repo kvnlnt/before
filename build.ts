@@ -77,6 +77,13 @@ export const library: Library = {
     "--palette_black": "0.15 0.01 260",
 
     /* ============================================================
+     * DOCUMENT PRIMITIVES (BODY LAYOUT)
+     * ============================================================ */
+    "--body_max_width": "120ch",
+    "--body_padding": "1.5rem",
+    "--body_margin": "0 auto",
+
+    /* ============================================================
      * PROPERTY MODIFIER COFACTORS (THE "HOW MUCH" OF THE PROPERTY)
      * ============================================================ */
     "--scale_opacity": 1,
@@ -125,11 +132,9 @@ export const library: Library = {
     "--font_family_mono": 'ui-monospace, "SF Mono", Menlo, monospace',
     "--font_family_script": '"Comic Sans MS", cursive, sans-serif',
     "--font_family_display": "system-ui, -apple-system, sans-serif",
-
     "--font_weight_regular": 400,
     "--font_weight_medium": 500,
     "--font_weight_bold": 700,
-
     "--font_size_body": "1rem",
     "--font_size_label": "0.875rem",
     "--font_size_heading": "1.5rem",
@@ -148,7 +153,7 @@ export const library: Library = {
      * SURFACE COLORS (BACKGROUNDS)
      * ============================================================ */
     // Light mode surfaces (high lightness)
-    "--surface_base": `oklch(var(--palette_white))`,
+    "--surface_base": `oklch(var(--palette_black))`,
     "--surface_raised": "oklch(0.96 0.005 260)",
     "--surface_overlay": "oklch(0.92 0.005 260)",
     "--surface_sunken": "oklch(0.9 0.005 260)",
@@ -508,9 +513,9 @@ export const library: Library = {
           lineHeight: "1.6",
           color: "oklch(0.2 0.01 260)",
           background: `oklch(var(--palette_white))`,
-          maxWidth: "65ch",
-          margin: "0 auto",
-          padding: "2rem 1rem",
+          margin: "var(--body_margin)",
+          padding: "var(--body_padding)",
+          maxWidth: "var(--body_max_width)",
         },
         "@media (prefers-color-scheme: dark)": {
           body: {
@@ -784,14 +789,19 @@ export const library: Library = {
           display: "none",
         },
         "summary::before": {
-          content: '"▸"',
+          content: "''",
+          height: "0",
+          width: "0",
+          borderLeft: "0.4em solid transparent",
+          borderRight: "0.4em solid transparent",
+          borderTop: "0.6em solid currentColor",
           display: "inline-block",
           marginInlineEnd: "0.5em",
           transition: "transform 0.2s ease",
-          fontSize: "1.25em",
+          transform: "rotate(-90deg)",
         },
         "details[open] > summary::before": {
-          transform: "rotate(90deg)",
+          transform: "rotate(0deg)",
         },
         "details[open] > summary": {
           borderBlockEnd: "1px solid oklch(0.85 0.005 260)",
@@ -2428,16 +2438,6 @@ Line 2
         "details[name] > summary::-webkit-details-marker": {
           display: "none",
         },
-        "details[name] > summary::after": {
-          content: '"\u002B"',
-          float: "inline-end",
-          fontSize: "1.25em",
-          lineHeight: "1",
-          transition: "transform 0.2s ease",
-        },
-        "details[name][open] > summary::after": {
-          content: '"−"',
-        },
         "details[name] > :not(summary)": {
           paddingInline: "1em",
         },
@@ -2680,6 +2680,40 @@ Line 2
           fontWeight: "600",
           backgroundColor: "var(--surface_overlay)",
         },
+        "@media (prefers-color-scheme: dark)": {
+          'nav[role="navigation"] a:hover, nav[role="navigation"] a:focus, nav[role="navigation"] button:hover, nav[role="navigation"] button:focus':
+            {
+              backgroundColor: "var(--surface_overlay_dark)",
+            },
+          'nav[role="navigation"] a[aria-current="page"]': {
+            backgroundColor: "var(--surface_elevated_dark)",
+          },
+          'nav[role="navigation"][aria-orientation="horizontal"] > ul > li, nav[role="navigation"]:not([aria-orientation]) > ul > li':
+            {
+              borderColor: "var(--surface_border_dark)",
+            },
+          'nav[role="navigation"][aria-orientation="horizontal"] ul ul, nav[role="navigation"]:not([aria-orientation]) ul ul':
+            {
+              background: "var(--surface_raised_dark)",
+              borderColor: "var(--surface_border_dark)",
+              boxShadow: "0 4px 12px oklch(0 0 0 / 0.3)",
+            },
+          'nav[role="navigation"][aria-orientation="vertical"] li': {
+            borderColor: "var(--surface_border_dark)",
+          },
+          'nav[role="navigation"][aria-orientation="vertical"] ul ul': {
+            background: "var(--surface_raised_dark)",
+            borderColor: "var(--surface_border_dark)",
+            boxShadow: "0 4px 12px oklch(0 0 0 / 0.3)",
+          },
+          'nav[role="navigation"][data-sticky]': {
+            background: "var(--surface_base_dark)",
+            borderColor: "var(--surface_border_dark)",
+          },
+          'nav[role="navigation"] li[role="separator"]': {
+            background: "var(--surface_border_dark)",
+          },
+        },
         'nav[role="navigation"][aria-orientation="horizontal"] > ul, nav[role="navigation"]:not([aria-orientation]) > ul':
           {
             flexDirection: "row",
@@ -2804,40 +2838,6 @@ Line 2
           opacity: "0.5",
           pointerEvents: "none",
           cursor: "not-allowed",
-        },
-        "@media (prefers-color-scheme: dark)": {
-          'nav[role="navigation"] a:hover, nav[role="navigation"] a:focus, nav[role="navigation"] button:hover, nav[role="navigation"] button:focus':
-            {
-              backgroundColor: "var(--surface_overlay_dark)",
-            },
-          'nav[role="navigation"] a[aria-current="page"]': {
-            backgroundColor: "var(--surface_elevated_dark)",
-          },
-          'nav[role="navigation"][aria-orientation="horizontal"] > ul > li, nav[role="navigation"]:not([aria-orientation]) > ul > li':
-            {
-              borderColor: "var(--surface_border_dark)",
-            },
-          'nav[role="navigation"][aria-orientation="horizontal"] ul ul, nav[role="navigation"]:not([aria-orientation]) ul ul':
-            {
-              background: "var(--surface_raised_dark)",
-              borderColor: "var(--surface_border_dark)",
-              boxShadow: "0 4px 12px oklch(0 0 0 / 0.3)",
-            },
-          'nav[role="navigation"][aria-orientation="vertical"] li': {
-            borderColor: "var(--surface_border_dark)",
-          },
-          'nav[role="navigation"][aria-orientation="vertical"] ul ul': {
-            background: "var(--surface_raised_dark)",
-            borderColor: "var(--surface_border_dark)",
-            boxShadow: "0 4px 12px oklch(0 0 0 / 0.3)",
-          },
-          'nav[role="navigation"][data-sticky]': {
-            background: "var(--surface_base_dark)",
-            borderColor: "var(--surface_border_dark)",
-          },
-          'nav[role="navigation"] li[role="separator"]': {
-            background: "var(--surface_border_dark)",
-          },
         },
       },
       example: [
@@ -3133,20 +3133,24 @@ function compile() {
     ${library.elements
       .map(
         (el) => `<section id="${el.tag}">
-      <h3>&lt;${el.tag}&gt; - ${el.title}</h3>
-      <p>${el.description}</p>
+        <h3>&lt;${el.tag}&gt; - ${el.title}</h3>
+        <p>${el.description}</p>
       ${
         el.variants &&
         el.variants
           .map(
-            (variant) => `<article>
-        <h4>${variant.title}</h4>
-        <p>${variant.description}</p>
-        <div class="preview">
-          ${variant.markup}
-        </div>
-        <pre><code class="language-html">${variant.markup && variant.markup.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</code></pre>
-      </article>`,
+            (variant) => `
+              <details>
+              <summary>${variant.title}</summary>
+              <article>
+                <h4>${variant.title}</h4>
+                <p>${variant.description}</p>
+                <div class="preview">
+                ${variant.markup}
+                </div>
+                <pre><code class="language-html">${variant.markup && variant.markup.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</code></pre>
+              </article>
+              </details>`,
           )
           .join("\n")
       }
