@@ -4672,43 +4672,44 @@ const HTML = {
 
   tabbedPanel: (title: string, description: string, markup: string) => {
     const id = slugify(title);
-    return html`
-      <section>
-        <h4>${title}</h4>
-        <p>${description}</p>
-        <ul role="tablist" aria-label="${title} tabs">
-          <li>
-            <input type="radio" name="${id}-tabs" id="${id}-preview" checked />
-            <label for="${id}-preview">Preview</label>
-          </li>
-          <li>
-            <input type="radio" name="${id}-tabs" id="${id}-code" />
-            <label for="${id}-code">Code</label>
-          </li>
-        </ul>
-        <div role="group" aria-label="Tab panels">
-          <div role="tabpanel">${markup}</div>
-          <div role="tabpanel">
-            <pre><code class="language-html">${escapeHtml(markup)}</code></pre>
-          </div>
-        </div>
-      </section>
-    `;
+    // Don't use html`` helper here to preserve markup indentation
+    return `<section>
+<h4>${title}</h4>
+<p>${description}</p>
+<ul role="tablist" aria-label="${title} tabs">
+  <li>
+    <input type="radio" name="${id}-tabs" id="${id}-preview" checked />
+    <label for="${id}-preview">Preview</label>
+  </li>
+  <li>
+    <input type="radio" name="${id}-tabs" id="${id}-code" />
+    <label for="${id}-code">Code</label>
+  </li>
+</ul>
+<div role="group" aria-label="Tab panels">
+  <div role="tabpanel">${markup}</div>
+  <div role="tabpanel">
+    <pre><code class="language-html">${escapeHtml(markup)}</code></pre>
+  </div>
+</div>
+</section>`;
   },
 
-  elementDetails: (el: (typeof library.elements)[0]) => html`
-    <details id="${el.tag}" name="${el.tag}">
-      <summary><code>&lt;${el.tag}&gt;</code> - ${el.description}</summary>
-      ${el.variants?.map((v) => HTML.tabbedPanel(v.title, v.description ?? "", v.markup ?? "")).join("\n") ?? ""}
-    </details>
-  `,
+  elementDetails: (el: (typeof library.elements)[0]) => {
+    const variants = el.variants?.map((v) => HTML.tabbedPanel(v.title, v.description ?? "", v.markup ?? "")).join("\n") ?? "";
+    return `<details id="${el.tag}" name="${el.tag}">
+<summary><code>&lt;${el.tag}&gt;</code> - ${el.description}</summary>
+${variants}
+</details>`;
+  },
 
-  componentDetails: (comp: (typeof library.components)[0]) => html`
-    <details id="${slugify(comp.title)}" name="${slugify(comp.title)}">
-      <summary>${comp.title} - ${comp.description}</summary>
-      ${comp.variants?.map((v) => HTML.tabbedPanel(v.title, v.description ?? "", v.markup ?? "")).join("\n") ?? ""}
-    </details>
-  `,
+  componentDetails: (comp: (typeof library.components)[0]) => {
+    const variants = comp.variants?.map((v) => HTML.tabbedPanel(v.title, v.description ?? "", v.markup ?? "")).join("\n") ?? "";
+    return `<details id="${slugify(comp.title)}" name="${slugify(comp.title)}">
+<summary>${comp.title} - ${comp.description}</summary>
+${variants}
+</details>`;
+  },
 
   document: (parts: { head: string; body: string }) => html`
     <!DOCTYPE html>
@@ -4810,56 +4811,63 @@ function compile() {
   const componentTags = library.components.map((c) => ({ id: slugify(c.title), label: c.title }));
 
   //#region Generate HTML
-  const pageHtml = HTML.document({
-    head: html`
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>${library.name}</title>
-      <link rel="stylesheet" href="before.css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
-    `,
-    body: html`
-      <nav role="navigation" aria-label="Main navigation" aria-orientation="horizontal" data-sticky>
-        <ul>
-          <li><a href="#top">${library.name}</a></li>
-          <li><a href="#elements">Elements</a><ul>${HTML.navList(elementNav)}</ul></li>
-          <li><a href="#components">Components</a><ul>${HTML.navList(componentNav)}</ul></li>
-          <li><a href="https://github.com/kvnlnt/before.style" target="_blank">GitHub</a></li>
-        </ul>
-      </nav>
+  const elementsSection = `<section id="elements">
+<h2>Elements</h2>
+<p>The following visual HTML5 elements are styled by Before:</p>
+<ul style="list-style-type: none; display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; margin: 0;">
+${HTML.tagList(elementTags)}
+</ul>
+</section>`;
 
-      ${HTML.section(html`<h2>Philosophy & Principles</h2><p>${library.description}</p>`)}
-      ${HTML.section(html`<h2>Getting Started</h2><p>To get started, simply copy/paste the <code>Before.css</code> file into your project and link to it in the head of your HTML document.</p>`)}
+  const componentsSection = `<section id="components">
+<h2>Components</h2>
+<p>The following components are built using semantic HTML and styled by Before:</p>
+<ul style="list-style-type: none; display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; margin: 0;">
+${HTML.tagList(componentTags)}
+</ul>
+</section>`;
 
-      ${HTML.section(
-        html`
-          <h2>Elements</h2>
-          <p>The following visual HTML5 elements are styled by Before:</p>
-          <ul style="list-style-type: none; display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; margin: 0;">
-            ${HTML.tagList(elementTags)}
-          </ul>
-        `,
-        "elements",
-      )}
+  const pageHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>${library.name}</title>
+<link rel="stylesheet" href="before.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+</head>
+<body>
+<nav role="navigation" aria-label="Main navigation" aria-orientation="horizontal" data-sticky>
+<ul>
+<li><a href="#top">${library.name}</a></li>
+<li><a href="#elements">Elements</a><ul>${HTML.navList(elementNav)}</ul></li>
+<li><a href="#components">Components</a><ul>${HTML.navList(componentNav)}</ul></li>
+<li><a href="https://github.com/kvnlnt/before.style" target="_blank">GitHub</a></li>
+</ul>
+</nav>
 
-      ${library.elements.map(HTML.elementDetails).join("\n")}
+<section>
+<h2>Philosophy & Principles</h2>
+<p>${library.description}</p>
+</section>
 
-      ${HTML.section(
-        html`
-          <h2>Components</h2>
-          <p>The following components are built using semantic HTML and styled by Before:</p>
-          <ul style="list-style-type: none; display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; margin: 0;">
-            ${HTML.tagList(componentTags)}
-          </ul>
-        `,
-        "components",
-      )}
+<section>
+<h2>Getting Started</h2>
+<p>To get started, simply copy/paste the <code>Before.css</code> file into your project and link to it in the head of your HTML document.</p>
+</section>
 
-      ${library.components.map(HTML.componentDetails).join("\n")}
+${elementsSection}
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    `,
-  });
+${library.elements.map(HTML.elementDetails).join("\n")}
+
+${componentsSection}
+
+${library.components.map(HTML.componentDetails).join("\n")}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</body>
+</html>`;
+
   Bun.file("docs/index.html").write(pageHtml);
   //#endregion Generate HTML
 
