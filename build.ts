@@ -1,3 +1,4 @@
+//#region Types
 export type Library = {
   version: string;
   name: string;
@@ -34,7 +35,9 @@ export type Library = {
     }[];
   }[];
 };
+//#endregion Types
 
+//#region Library
 export const library: Library = {
   name: "Before",
   description: `Before is a classless, semantic style reset that styles HTML5 elements directly, providing accessible defaults without relying on
@@ -46,6 +49,7 @@ All components are implemented according to the
 <a href="https://www.w3.org/WAI/ARIA/apg/patterns/">ARIA Authoring Practices Guide (APG)</a>, ensuring they are accessible, predictable, and keyboard-friendly, so your semantic HTML remains usable for everyone.
     `,
   version: "1.0.0",
+  //#region Reset
   reset: {
     html: {
       boxSizing: "border-box",
@@ -70,6 +74,8 @@ All components are implemented according to the
       marginBlockStart: "var(--flow-space, 1rem)",
     },
   },
+  //#endregion Reset
+  //#region Tokens
   tokens: {
     /* ============================================================
      * COLOR PRIMITIVES (OKLCH: L C H)
@@ -184,7 +190,10 @@ All components are implemented according to the
     "--surface_highlight": "oklch(0.92 0.15 95)",
     "--surface_highlight_dark": "oklch(0.45 0.12 95)",
   },
+  //#endregion Tokens
+  //#region Elements
   elements: [
+    //#region a
     {
       title: "a",
       tag: "a",
@@ -307,6 +316,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion a
+    //#region abbr
     {
       title: "abbr",
       tag: "abbr",
@@ -325,6 +336,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion abbr
+    //#region address
     {
       title: "address",
       tag: "address",
@@ -346,6 +359,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion address
+    //#region article
     {
       title: "article",
       tag: "article",
@@ -366,6 +381,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion article
+    //#region aside
     {
       title: "aside",
       tag: "aside",
@@ -397,6 +414,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion aside
+    //#region audio
     {
       title: "audio",
       tag: "audio",
@@ -418,6 +437,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion audio
+    //#region b
     {
       title: "b",
       tag: "b",
@@ -435,6 +456,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion b
+    //#region blockquote
     {
       title: "blockquote",
       tag: "blockquote",
@@ -478,6 +501,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion blockquote
+    //#region body
     {
       title: "body",
       tag: "body",
@@ -508,6 +533,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion body
+    //#region br
     {
       title: "br",
       tag: "br",
@@ -521,6 +548,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion br
+    //#region canvas
     {
       title: "canvas",
       tag: "canvas",
@@ -540,6 +569,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion canvas
+    //#region caption
     {
       title: "caption",
       tag: "caption",
@@ -563,6 +594,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion caption
+    //#region cite
     {
       title: "cite",
       tag: "cite",
@@ -580,6 +613,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion cite
+    //#region code
     {
       title: "code",
       tag: "code",
@@ -652,6 +687,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion code
+    //#region data
     {
       title: "data",
       tag: "data",
@@ -665,6 +702,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion data
+    //#region dd
     {
       title: "dd",
       tag: "dd",
@@ -686,6 +725,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion dd
+    //#region del
     {
       title: "del",
       tag: "del",
@@ -703,6 +744,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion del
+    //#region details
     {
       title: "details",
       tag: "details",
@@ -767,6 +810,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion details
+    //#region dialog
     {
       title: "dialog",
       tag: "dialog",
@@ -801,6 +846,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion dialog
+    //#region dfn
     {
       title: "dfn",
       tag: "dfn",
@@ -819,6 +866,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion dfn
+    //#region div
     {
       title: "div",
       tag: "div",
@@ -834,6 +883,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion div
+    //#region dl
     {
       title: "dl",
       tag: "dl",
@@ -856,6 +907,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion dl
+    //#region dt
     {
       title: "dt",
       tag: "dt",
@@ -880,6 +933,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion dt
+    //#region em
     {
       title: "em",
       tag: "em",
@@ -897,6 +952,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion em
+    //#region embed
     {
       title: "embed",
       tag: "embed",
@@ -907,6 +964,8 @@ All components are implemented according to the
         },
       },
     },
+    //#endregion embed
+    //#region fieldset
     {
       title: "fieldset",
       tag: "fieldset",
@@ -926,6 +985,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion fieldset
+    //#region figcaption
     {
       title: "figcaption",
       tag: "figcaption",
@@ -950,6 +1011,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion figcaption
+    //#region figure
     {
       title: "figure",
       tag: "figure",
@@ -971,6 +1034,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion figure
+    //#region footer
     {
       title: "footer",
       tag: "footer",
@@ -1000,6 +1065,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion footer
+    //#region form
     {
       title: "form",
       tag: "form",
@@ -1130,6 +1197,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion form
+    //#region h1
     {
       title: "h1",
       tag: "h1",
@@ -1155,6 +1224,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion h1
+    //#region h2
     {
       title: "h2",
       tag: "h2",
@@ -1180,6 +1251,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion h2
+    //#region h3
     {
       title: "h3",
       tag: "h3",
@@ -1205,6 +1278,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion h3
+    //#region h4
     {
       title: "h4",
       tag: "h4",
@@ -1230,6 +1305,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion h4
+    //#region h5
     {
       title: "h5",
       tag: "h5",
@@ -1256,6 +1333,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion h5
+    //#region h6
     {
       title: "h6",
       tag: "h6",
@@ -1282,6 +1361,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion h6
+    //#region header
     {
       title: "header",
       tag: "header",
@@ -1305,6 +1386,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion header
+    //#region hgroup
     {
       title: "hgroup",
       tag: "hgroup",
@@ -1336,6 +1419,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion hgroup
+    //#region hr
     {
       title: "hr",
       tag: "hr",
@@ -1362,6 +1447,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion hr
+    //#region i
     {
       title: "i",
       tag: "i",
@@ -1379,6 +1466,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion i
+    //#region iframe
     {
       title: "iframe",
       tag: "iframe",
@@ -1397,6 +1486,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion iframe
+    //#region img
     {
       title: "img",
       tag: "img",
@@ -1416,6 +1507,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion img
+    //#region input
     {
       title: "input",
       tag: "input",
@@ -1440,6 +1533,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion input
+    //#region ins
     {
       title: "ins",
       tag: "ins",
@@ -1457,6 +1552,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion ins
+    //#region kbd
     {
       title: "kbd",
       tag: "kbd",
@@ -1470,6 +1567,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion kbd
+    //#region label
     {
       title: "label",
       tag: "label",
@@ -1484,6 +1583,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion label
+    //#region legend
     {
       title: "legend",
       tag: "legend",
@@ -1501,6 +1602,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion legend
+    //#region li
     {
       title: "li",
       tag: "li",
@@ -1523,6 +1626,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion li
+    //#region main
     {
       title: "main",
       tag: "main",
@@ -1543,6 +1648,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion main
+    //#region mark
     {
       title: "mark",
       tag: "mark",
@@ -1568,6 +1675,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion mark
+    //#region nav
     {
       title: "nav",
       tag: "nav",
@@ -1589,6 +1698,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion nav
+    //#region object
     {
       title: "object",
       tag: "object",
@@ -1599,6 +1710,8 @@ All components are implemented according to the
         },
       },
     },
+    //#endregion object
+    //#region ol
     {
       title: "ol",
       tag: "ol",
@@ -1625,6 +1738,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion ol
+    //#region output
     {
       title: "output",
       tag: "output",
@@ -1638,6 +1753,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion output
+    //#region p
     {
       title: "p",
       tag: "p",
@@ -1663,6 +1780,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion p
+    //#region picture
     {
       title: "picture",
       tag: "picture",
@@ -1686,6 +1805,8 @@ All components are implemented according to the
         },
       ],
     },
+    //#endregion picture
+    //#region pre
     {
       title: "pre",
       tag: "pre",
@@ -1701,6 +1822,8 @@ Line 2
         },
       ],
     },
+    //#endregion pre
+    //#region progress
     {
       title: "progress",
       tag: "progress",
@@ -1714,6 +1837,8 @@ Line 2
         },
       ],
     },
+    //#endregion progress
+    //#region q
     {
       title: "q",
       tag: "q",
@@ -1727,6 +1852,8 @@ Line 2
         },
       ],
     },
+    //#endregion q
+    //#region s
     {
       title: "s",
       tag: "s",
@@ -1744,6 +1871,8 @@ Line 2
         },
       ],
     },
+    //#endregion s
+    //#region samp
     {
       title: "samp",
       tag: "samp",
@@ -1757,6 +1886,8 @@ Line 2
         },
       ],
     },
+    //#endregion samp
+    //#region section
     {
       title: "section",
       tag: "section",
@@ -1777,6 +1908,8 @@ Line 2
         },
       ],
     },
+    //#endregion section
+    //#region select
     {
       title: "select",
       tag: "select",
@@ -1795,6 +1928,8 @@ Line 2
         },
       ],
     },
+    //#endregion select
+    //#region small
     {
       title: "small",
       tag: "small",
@@ -1812,6 +1947,8 @@ Line 2
         },
       ],
     },
+    //#endregion small
+    //#region span
     {
       title: "span",
       tag: "span",
@@ -1825,6 +1962,8 @@ Line 2
         },
       ],
     },
+    //#endregion span
+    //#region strong
     {
       title: "strong",
       tag: "strong",
@@ -1842,6 +1981,8 @@ Line 2
         },
       ],
     },
+    //#endregion strong
+    //#region sub
     {
       title: "sub",
       tag: "sub",
@@ -1863,6 +2004,8 @@ Line 2
         },
       ],
     },
+    //#endregion sub
+    //#region summary
     {
       title: "summary",
       tag: "summary",
@@ -1879,6 +2022,8 @@ Line 2
         },
       ],
     },
+    //#endregion summary
+    //#region sup
     {
       title: "sup",
       tag: "sup",
@@ -1900,6 +2045,8 @@ Line 2
         },
       ],
     },
+    //#endregion sup
+    //#region table
     {
       title: "table",
       tag: "table",
@@ -1928,6 +2075,8 @@ Line 2
         },
       ],
     },
+    //#endregion table
+    //#region tbody
     {
       title: "tbody",
       tag: "tbody",
@@ -1958,6 +2107,8 @@ Line 2
         },
       ],
     },
+    //#endregion tbody
+    //#region td
     {
       title: "td",
       tag: "td",
@@ -1979,6 +2130,8 @@ Line 2
         },
       ],
     },
+    //#endregion td
+    //#region textarea
     {
       title: "textarea",
       tag: "textarea",
@@ -1992,6 +2145,8 @@ Line 2
         },
       ],
     },
+    //#endregion textarea
+    //#region tfoot
     {
       title: "tfoot",
       tag: "tfoot",
@@ -2019,6 +2174,8 @@ Line 2
         },
       ],
     },
+    //#endregion tfoot
+    //#region th
     {
       title: "th",
       tag: "th",
@@ -2041,6 +2198,8 @@ Line 2
         },
       ],
     },
+    //#endregion th
+    //#region thead
     {
       title: "thead",
       tag: "thead",
@@ -2070,6 +2229,8 @@ Line 2
         },
       ],
     },
+    //#endregion thead
+    //#region time
     {
       title: "time",
       tag: "time",
@@ -2083,6 +2244,8 @@ Line 2
         },
       ],
     },
+    //#endregion time
+    //#region tr
     {
       title: "tr",
       tag: "tr",
@@ -2100,6 +2263,8 @@ Line 2
         },
       ],
     },
+    //#endregion tr
+    //#region u
     {
       title: "u",
       tag: "u",
@@ -2119,6 +2284,8 @@ Line 2
         },
       ],
     },
+    //#endregion u
+    //#region ul
     {
       title: "ul",
       tag: "ul",
@@ -2158,6 +2325,8 @@ Line 2
         },
       ],
     },
+    //#endregion ul
+    //#region var
     {
       title: "var",
       tag: "var",
@@ -2171,6 +2340,8 @@ Line 2
         },
       ],
     },
+    //#endregion var
+    //#region video
     {
       title: "video",
       tag: "video",
@@ -2192,8 +2363,12 @@ Line 2
         },
       ],
     },
+    //#endregion video
   ],
+  //#endregion Elements
+  //#region Components
   components: [
+    //#region Accordion
     {
       title: "Accordion",
       description: "A vertically stacked set of interactive headings that each reveal a section of content.",
@@ -2325,6 +2500,8 @@ Line 2
         },
       ],
     },
+    //#endregion Accordion
+    //#region Alert
     {
       title: "Alert",
       description: "A live region that displays important, time-sensitive information to the user.",
@@ -2393,6 +2570,8 @@ Line 2
         },
       ],
     },
+    //#endregion Alert
+    //#region Breadcrumb
     {
       title: "Breadcrumb",
       description: "A navigation aid that shows the user's current location within a site hierarchy.",
@@ -2440,6 +2619,8 @@ Line 2
         },
       ],
     },
+    //#endregion Breadcrumb
+    //#region Button
     {
       title: "Button",
       description: "An interactive element that triggers an action when activated by the user.",
@@ -2532,6 +2713,8 @@ Line 2
         },
       ],
     },
+    //#endregion Button
+    //#region Carousel
     {
       title: "Carousel",
       description: "A rotating set of content items that can be navigated through sequentially.",
@@ -2589,6 +2772,8 @@ Line 2
         },
       ],
     },
+    //#endregion Carousel
+    //#region Checkbox
     {
       title: "Checkbox",
       description: "A form control that allows users to select one or more options from a set.",
@@ -2650,6 +2835,8 @@ Line 2
         },
       ],
     },
+    //#endregion Checkbox
+    //#region Combobox
     {
       title: "Combobox",
       description: "A composite widget combining a text input with a popup listbox for selecting values.",
@@ -2711,6 +2898,8 @@ Line 2
         },
       ],
     },
+    //#endregion Combobox
+    //#region Dialog
     {
       title: "Dialog",
       description: "A modal or non-modal window that appears above the page content requiring user interaction.",
@@ -2772,6 +2961,8 @@ Line 2
         },
       ],
     },
+    //#endregion Dialog
+    //#region Disclosure
     {
       title: "Disclosure",
       description: "A button that controls the visibility of a section of content.",
@@ -2832,6 +3023,8 @@ Line 2
         },
       ],
     },
+    //#endregion Disclosure
+    //#region Feed
     {
       title: "Feed",
       description: "A scrollable list of articles where new content may be added as the user scrolls.",
@@ -2877,6 +3070,8 @@ Line 2
         },
       ],
     },
+    //#endregion Feed
+    //#region Grid
     {
       title: "Grid",
       description: "An interactive two-dimensional data structure with rows and columns of cells.",
@@ -2948,6 +3143,8 @@ Line 2
         },
       ],
     },
+    //#endregion Grid
+    //#region Header
     {
       title: "Header",
       description: "A container for introductory content or navigational aids at the top of a page or section.",
@@ -2983,6 +3180,8 @@ Line 2
         },
       ],
     },
+    //#endregion Header
+    //#region Landmarks
     {
       title: "Landmarks",
       description: "Semantic regions that help assistive technology users navigate and understand page structure.",
@@ -3036,6 +3235,8 @@ Line 2
         },
       ],
     },
+    //#endregion Landmarks
+    //#region Link
     {
       title: "Link",
       description: "An interactive reference to a resource that navigates the user when activated.",
@@ -3068,6 +3269,8 @@ Line 2
         },
       ],
     },
+    //#endregion Link
+    //#region Listbox
     {
       title: "Listbox",
       description: "A widget that allows users to select one or more items from a list of choices.",
@@ -3121,6 +3324,8 @@ Line 2
         },
       ],
     },
+    //#endregion Listbox
+    //#region Menu
     {
       title: "Menu",
       description:
@@ -3447,6 +3652,8 @@ Line 2
         },
       ],
     },
+    //#endregion Menu
+    //#region Meter
     {
       title: "Meter",
       description: "A graphical display of a numeric value within a known range.",
@@ -3499,6 +3706,8 @@ Line 2
         },
       ],
     },
+    //#endregion Meter
+    //#region Radio
     {
       title: "Radio",
       description: "A group of mutually exclusive options where only one can be selected at a time.",
@@ -3567,6 +3776,8 @@ Line 2
         },
       ],
     },
+    //#endregion Radio
+    //#region Slider
     {
       title: "Slider",
       description: "An input control that allows users to select a value from a range by dragging a thumb.",
@@ -3629,6 +3840,8 @@ Line 2
         },
       ],
     },
+    //#endregion Slider
+    //#region Spinbutton
     {
       title: "Spinbutton",
       description: "A numeric input field with increment and decrement buttons for adjusting values.",
@@ -3678,6 +3891,8 @@ Line 2
         },
       ],
     },
+    //#endregion Spinbutton
+    //#region Switch
     {
       title: "Switch",
       description: "A toggle control that represents an on/off or enabled/disabled state.",
@@ -3745,6 +3960,8 @@ Line 2
         },
       ],
     },
+    //#endregion Switch
+    //#region Table
     {
       title: "Table",
       description: "A structured grid of data organized in rows and columns for displaying information.",
@@ -3824,6 +4041,8 @@ Line 2
         },
       ],
     },
+    //#endregion Table
+    //#region Tabs
     {
       title: "Tabs",
       description:
@@ -4036,6 +4255,8 @@ Line 2
         },
       ],
     },
+    //#endregion Tabs
+    //#region Toolbar
     {
       title: "Toolbar",
       description: "A container for grouping related controls such as buttons and menu items.",
@@ -4111,6 +4332,8 @@ Line 2
         },
       ],
     },
+    //#endregion Toolbar
+    //#region Tooltip
     {
       title: "Tooltip",
       description: "A contextual popup that displays descriptive information about an element on hover or focus.",
@@ -4191,6 +4414,8 @@ Line 2
         },
       ],
     },
+    //#endregion Tooltip
+    //#region Treegrid
     {
       title: "Treegrid",
       description: "A grid widget that combines the features of a tree and a data grid.",
@@ -4271,6 +4496,8 @@ Line 2
         },
       ],
     },
+    //#endregion Treegrid
+    //#region Treeview
     {
       title: "Treeview",
       description: "A hierarchical list that can have nested groups of items that can be expanded or collapsed.",
@@ -4346,6 +4573,8 @@ Line 2
         },
       ],
     },
+    //#endregion Treeview
+    //#region Window Splitter
     {
       title: "Window Splitter",
       description: "A movable divider that separates two sections and allows resizing them.",
@@ -4397,284 +4626,168 @@ Line 2
         },
       ],
     },
+    //#endregion Window Splitter
   ],
+  //#endregion Components
 };
+//#endregion Library
 
-function compile() {
-  // Helper to escape HTML for code display
-  const escapeHtml = (str: string) => str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+//#region Compile
 
-  // Helper to render a navigation list
-  const renderNavList = (items: { href: string; label: string }[]) =>
-    items.map(({ href, label }) => `<li><a href="${href}">${label}</a></li>`).join("\n");
+//#region Builder Utilities
+/** Tagged template for clean HTML - trims and normalizes whitespace */
+const html = (strings: TemplateStringsArray, ...values: unknown[]): string =>
+  strings
+    .reduce((acc, str, i) => acc + str + (values[i] ?? ""), "")
+    .split("\n")
+    .map((line) => line.trimStart())
+    .join("\n")
+    .trim();
 
-  // Helper to render a tag link list
-  const renderTagList = (items: { id: string; label: string }[]) =>
-    items.map(({ id, label }) => `<li><a href="#${id}">${label}</a></li>`).join("\n");
+/** Escape HTML entities for code display */
+const escapeHtml = (str: string) => str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-  // Helper to render an element variant
-  // Uses CSS-only tabs with nth-child selectors for panel visibility
-  const renderVariant = (variant: { title: string; description?: string; markup?: string }) => {
-    const uuid = variant.title.toLowerCase().replace(/\s+/g, "-");
+/** Convert camelCase to kebab-case */
+const toKebab = (str: string) => str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 
-    return `
-  <section>
-    <h4>${variant.title}</h4>
-    <p>${variant.description ?? ""}</p>
-    <ul role="tablist" aria-label="${variant.title} tabs">
-      <li>
-        <input type="radio" name="${uuid}-tabs" id="${uuid}-preview" checked />
-        <label for="${uuid}-preview">Preview</label>
-      </li>
-      <li>
-        <input type="radio" name="${uuid}-tabs" id="${uuid}-code" />
-        <label for="${uuid}-code">Code</label>
-      </li>
-    </ul>
-    <div role="group" aria-label="Tab panels">
-      <div role="tabpanel">
-        ${variant.markup ?? ""}
-      </div>
-      <div role="tabpanel">
-        <pre><code class="language-html">${escapeHtml(variant.markup ?? "")}</code></pre>
-      </div>
-    </div>
-  </section>`;
-  };
+/** Generate a URL-safe slug from a title */
+const slugify = (str: string) => str.toLowerCase().replace(/\s+/g, "-");
+//#endregion Builder Utilities
 
-  // Helper to render an element section
-  const renderElementSection = (el: (typeof library.elements)[0]) => `
-   <details id="${el.tag}" name="${el.tag}">
-    <summary><code>&lt;${el.tag}&gt;</code> - ${el.description}</summary>
-    ${el.variants?.map(renderVariant).join("\n") ?? ""}
-  </details>
-  `;
+//#region HTML Builder
+const HTML = {
+  link: (href: string, label: string) => `<a href="${href}">${label}</a>`,
 
-  // Helper to render a component section
-  const renderComponentSection = (component: (typeof library.components)[0]) => `
-    <details id="${component.title.toLowerCase()}" name="${component.title.toLowerCase()}">
-    <summary>${component.title} - ${component.description}</summary>
-    ${component.variants?.map(renderVariant).join("\n") ?? ""}
-  </details>`;
+  navItem: (href: string, label: string) => `<li>${HTML.link(href, label)}</li>`,
 
-  // Build navigation data
-  const elementNavItems = library.elements.map((el) => ({ href: `#${el.tag}`, label: el.tag }));
-  const componentNavItems = library.components.map((c) => ({ href: `#${c.title.toLowerCase()}`, label: c.title }));
-  const elementTagLinks = library.elements.map((el) => ({ id: el.tag, label: `&lt;${el.tag}&gt;` }));
-  const componentTagLinks = library.components.map((c) => ({ id: c.title.toLowerCase(), label: c.title }));
+  navList: (items: { href: string; label: string }[]) => items.map((i) => HTML.navItem(i.href, i.label)).join("\n"),
 
-  // Render HTML
-  const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${library.name}</title>
-  <link rel="stylesheet" href="before.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-</head>
-<body>
-  <nav role="navigation" aria-label="Main navigation" aria-orientation="horizontal" data-sticky>
-    <ul>
-      <li><a href="#top">${library.name}</a></li>
-      <li>
-        <a href="#elements">Elements</a>
-        <ul>${renderNavList(elementNavItems)}</ul>
-      </li>
-      <li>
-        <a href="#components">Components</a>
-        <ul>${renderNavList(componentNavItems)}</ul>
-      </li>
-      <li><a href="https://github.com/kvnlnt/before.style" target="_blank">GitHub</a></li>
-    </ul>
-  </nav>
-  <section>
-    <h2>Philosophy & Principles</h2>
-    <p>
-      ${library.description}
-    </p>
-  </section>
+  tagList: (items: { id: string; label: string }[]) => items.map((i) => `<li>${HTML.link("#" + i.id, i.label)}</li>`).join("\n"),
 
-  <section>
-    <h2>Getting Started</h2>
-    <p>
-      To get started, simply copy/paste the <code>Before.css</code> file into
-      your project and link to it in the head of your HTML document.
-    </p>
-  </section>
+  section: (content: string, id?: string) => html`
+    <section${id ? ` id="${id}"` : ""}>
+      ${content}
+    </section>
+  `,
 
-  <section id="elements">
-    <h2>Elements</h2>
-    <p>The following visual HTML5 elements are styled by Before:</p>
-    <ul style="list-style-type: none; display: flex; flex-wrap: wrap; row-gap: 0rem; column-gap: 1rem; padding: 0; margin: 0;">
-      ${renderTagList(elementTagLinks)}
-    </ul>
-  </section>
+  tabbedPanel: (title: string, description: string, markup: string) => {
+    const id = slugify(title);
+    return html`
+      <section>
+        <h4>${title}</h4>
+        <p>${description}</p>
+        <ul role="tablist" aria-label="${title} tabs">
+          <li>
+            <input type="radio" name="${id}-tabs" id="${id}-preview" checked />
+            <label for="${id}-preview">Preview</label>
+          </li>
+          <li>
+            <input type="radio" name="${id}-tabs" id="${id}-code" />
+            <label for="${id}-code">Code</label>
+          </li>
+        </ul>
+        <div role="group" aria-label="Tab panels">
+          <div role="tabpanel">${markup}</div>
+          <div role="tabpanel">
+            <pre><code class="language-html">${escapeHtml(markup)}</code></pre>
+          </div>
+        </div>
+      </section>
+    `;
+  },
 
-  ${library.elements.map(renderElementSection).join("\n")}
+  elementDetails: (el: (typeof library.elements)[0]) => html`
+    <details id="${el.tag}" name="${el.tag}">
+      <summary><code>&lt;${el.tag}&gt;</code> - ${el.description}</summary>
+      ${el.variants?.map((v) => HTML.tabbedPanel(v.title, v.description ?? "", v.markup ?? "")).join("\n") ?? ""}
+    </details>
+  `,
 
-  <section id="components">
-    <h2>Components</h2>
-    <p>The following components are built using semantic HTML and styled by Before:</p>
-    <ul style="list-style-type: none; display: flex; flex-wrap: wrap; row-gap: 0rem; column-gap: 1rem; padding: 0; margin: 0;">
-      ${renderTagList(componentTagLinks)}
-    </ul>
-  </section>
+  componentDetails: (comp: (typeof library.components)[0]) => html`
+    <details id="${slugify(comp.title)}" name="${slugify(comp.title)}">
+      <summary>${comp.title} - ${comp.description}</summary>
+      ${comp.variants?.map((v) => HTML.tabbedPanel(v.title, v.description ?? "", v.markup ?? "")).join("\n") ?? ""}
+    </details>
+  `,
 
-  ${library.components.map(renderComponentSection).join("\n")}
+  document: (parts: { head: string; body: string }) => html`
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>${parts.head}</head>
+      <body>${parts.body}</body>
+    </html>
+  `,
+};
+//#endregion HTML Builder
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-</body>
-</html>`;
+//#region CSS Builder
+const CSS = {
+  header: (title: string) =>
+    ["/* ==========================================================================", `   ${title}`, "   ========================================================================== */"].join("\n"),
 
-  Bun.file("docs/index.html").write(html);
+  properties: (styles: Record<string, unknown>, indent = 2) =>
+    Object.entries(styles)
+      .map(([prop, value]) => " ".repeat(indent) + `${toKebab(prop)}: ${value};`)
+      .join("\n"),
 
-  // Helper to convert camelCase to kebab-case
-  const toKebab = (str: string) => str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+  rule: (selector: string, styles: Record<string, unknown>) => [selector + " {", CSS.properties(styles), "}"].join("\n"),
 
-  // Helper to render a style object to CSS
-  const renderStyles = (styles: Record<string, unknown>): string => {
-    return Object.entries(styles)
-      .map(([prop, value]) => `  ${toKebab(prop)}: ${value};`)
+  atRule: (atSelector: string, rules: Record<string, unknown>) => {
+    const innerRules = Object.entries(rules)
+      .map(([sel, styles]) => ["  " + sel + " {", CSS.properties(styles as Record<string, unknown>, 4), "  }"].join("\n"))
       .join("\n");
-  };
+    return [atSelector + " {", innerRules, "}"].join("\n");
+  },
 
-  // Helper to render a selector block (handles nested media queries and keyframes)
-  const renderBlock = (selector: string, value: unknown): string => {
-    if (selector.startsWith("@media")) {
-      // It's a media query - value is an object of selectors
-      const innerRules = Object.entries(value as Record<string, unknown>)
-        .map(
-          ([innerSelector, innerStyles]) =>
-            `  ${innerSelector} {\n${renderStyles(innerStyles as Record<string, unknown>)
-              .split("\n")
-              .map((l) => "  " + l)
-              .join("\n")}\n  }`,
-        )
-        .join("\n");
-      return `${selector} {\n${innerRules}\n}`;
+  block: (selector: string, value: unknown): string => {
+    if (selector.startsWith("@media") || selector.startsWith("@keyframes")) {
+      return CSS.atRule(selector, value as Record<string, unknown>);
     }
-    if (selector.startsWith("@keyframes")) {
-      // It's a keyframes rule - value is an object of keyframe stops (from, to, percentages)
-      const innerRules = Object.entries(value as Record<string, unknown>)
-        .map(
-          ([stop, styles]) =>
-            `  ${stop} {\n${renderStyles(styles as Record<string, unknown>)
-              .split("\n")
-              .map((l) => "  " + l)
-              .join("\n")}\n  }`,
-        )
-        .join("\n");
-      return `${selector} {\n${innerRules}\n}`;
-    }
-    // Regular selector
-    return `${selector} {\n${renderStyles(value as Record<string, unknown>)}\n}`;
-  };
+    return CSS.rule(selector, value as Record<string, unknown>);
+  },
 
-  // Render CSS
-  const css = `/* Before - A classless, semantic CSS reset for HTML5 elements and accessible components */
-/* Version: ${library.version} */
+  tokens: (tokenMap: Record<string, string | number>) => [":root {", ...Object.entries(tokenMap).map(([k, v]) => `  ${k}: ${v};`), "}"].join("\n"),
 
-/* ==========================================================================
-   Reset
-   ========================================================================== */
+  minify: (css: string) =>
+    css
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/\s+/g, " ")
+      .replace(/\s*([{}:;])\s*/g, "$1")
+      .replace(/;}/g, "}"),
 
-${Object.entries(library.reset)
-  .map(([selector, styles]) => renderBlock(selector, styles))
-  .join("\n\n")}
+  stylesheet: (parts: string[]) => parts.filter(Boolean).join("\n\n"),
+};
+//#endregion CSS Builder
 
-/* ==========================================================================
-   Tokens (CSS Custom Properties)
-   ========================================================================== */
+//#region Markdown Builder
+const MD = {
+  h: (level: number, text: string) => "#".repeat(level) + " " + text,
 
-:root {
-${Object.entries(library.tokens)
-  .map(([token, value]) => `  ${token}: ${value};`)
-  .join("\n")}
-}
+  codeBlock: (lang: string, code: string) => ["```" + lang, code, "```"].join("\n"),
 
-/* ==========================================================================
-   Elements
-   ========================================================================== */
+  hr: () => "---",
 
-${library.elements
-  .filter((el) => el.styles && Object.keys(el.styles).length > 0)
-  .map((el) =>
-    Object.entries(el.styles)
-      .map(([selector, styles]) => renderBlock(selector, styles))
-      .join("\n\n"),
-  )
-  .join("\n\n")}
+  li: (text: string, checked?: boolean) => {
+    if (checked !== undefined) return `- ${checked ? "✅" : "❌"} ${text}`;
+    return `- ${text}`;
+  },
 
-/* ==========================================================================
-   Components
-   ========================================================================== */
+  table: (headers: string[], rows: string[][]) => {
+    const headerRow = "| " + headers.join(" | ") + " |";
+    const separator = "|" + headers.map(() => "-------").join("|") + "|";
+    const bodyRows = rows.map((row) => "| " + row.join(" | ") + " |").join("\n");
+    return [headerRow, separator, bodyRows].join("\n");
+  },
 
-${library.components
-  .filter((comp) => comp.styles && Object.keys(comp.styles).length > 0)
-  .map((comp) =>
-    Object.entries(comp.styles!)
-      .map(([selector, styles]) => renderBlock(selector, styles))
-      .join("\n\n"),
-  )
-  .join("\n\n")}
-`;
-  Bun.file("docs/before.css").write(css);
+  sections: (...parts: string[]) => parts.filter(Boolean).join("\n\n" + MD.hr() + "\n\n"),
 
-  // Generate minified CSS
-  const minifiedCss = css
-    .replace(/\/\*[\s\S]*?\*\//g, "") // Remove comments
-    .replace(/\s+/g, " ") // Collapse whitespace
-    .replace(/\s*{\s*/g, "{") // Remove space around {
-    .replace(/\s*}\s*/g, "}") // Remove space around }
-    .replace(/\s*;\s*/g, ";") // Remove space around ;
-    .replace(/\s*:\s*/g, ":") // Remove space around :
-    .replace(/;\}/g, "}"); // Remove ; before }
+  element: (el: (typeof library.elements)[0]) => {
+    const variants =
+      el.variants?.map((v) => [MD.h(4, v.title), v.description ?? "", MD.codeBlock("html", v.markup ?? "")].join("\n\n")).join("\n\n") ?? "";
+    return [MD.h(3, `\`<${el.tag}>\` - ${el.title}`), el.description ?? "", variants].join("\n\n");
+  },
 
-  Bun.file("docs/before.min.css").write(minifiedCss);
-
-  /* ==========================================================================
-   Skills - Generate a Skills.md file for agents
-   ========================================================================== */
-
-  // Helper to render element documentation
-  const renderElementDoc = (el: (typeof library.elements)[0]) => {
-    const variants = el.variants
-      ?.map(
-        (v) => `
-#### ${v.title}
-
-${v.description ?? ""}
-
-\`\`\`html
-${v.markup ?? ""}
-\`\`\``,
-      )
-      .join("\n");
-
-    return `### \`<${el.tag}>\` - ${el.title}
-
-${el.description ?? ""}
-
-${variants ?? ""}`;
-  };
-
-  // Helper to render component documentation
-  const renderComponentDoc = (comp: (typeof library.components)[0]) => {
-    const examples = comp.variants
-      ?.map(
-        (ex) => `
-#### ${ex.title}
-
-${ex.description ?? ""}
-
-\`\`\`html
-${ex.markup ?? ""}
-\`\`\``,
-      )
-      .join("\n");
-
-    // Extract selectors used by this component
+  component: (comp: (typeof library.components)[0]) => {
     const selectors = comp.styles
       ? Object.keys(comp.styles)
           .filter((s) => !s.startsWith("@"))
@@ -4682,96 +4795,162 @@ ${ex.markup ?? ""}
           .map((s) => `\`${s}\``)
           .join(", ")
       : "";
+    const examples =
+      comp.variants?.map((v) => [MD.h(4, v.title), v.description ?? "", MD.codeBlock("html", v.markup ?? "")].join("\n\n")).join("\n\n") ?? "";
+    return [MD.h(3, comp.title), comp.description ?? "", selectors ? `**Selectors:** ${selectors}` : "", examples].filter(Boolean).join("\n\n");
+  },
+};
+//#endregion Markdown Builder
 
-    return `### ${comp.title}
+//#region Compile Function
+function compile() {
+  const elementNav = library.elements.map((el) => ({ href: `#${el.tag}`, label: el.tag }));
+  const componentNav = library.components.map((c) => ({ href: `#${slugify(c.title)}`, label: c.title }));
+  const elementTags = library.elements.map((el) => ({ id: el.tag, label: `&lt;${el.tag}&gt;` }));
+  const componentTags = library.components.map((c) => ({ id: slugify(c.title), label: c.title }));
 
-${comp.description ?? ""}
+  //#region Generate HTML
+  const pageHtml = HTML.document({
+    head: html`
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>${library.name}</title>
+      <link rel="stylesheet" href="before.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+    `,
+    body: html`
+      <nav role="navigation" aria-label="Main navigation" aria-orientation="horizontal" data-sticky>
+        <ul>
+          <li><a href="#top">${library.name}</a></li>
+          <li><a href="#elements">Elements</a><ul>${HTML.navList(elementNav)}</ul></li>
+          <li><a href="#components">Components</a><ul>${HTML.navList(componentNav)}</ul></li>
+          <li><a href="https://github.com/kvnlnt/before.style" target="_blank">GitHub</a></li>
+        </ul>
+      </nav>
 
-${selectors ? `**Selectors:** ${selectors}` : ""}
+      ${HTML.section(html`<h2>Philosophy & Principles</h2><p>${library.description}</p>`)}
+      ${HTML.section(html`<h2>Getting Started</h2><p>To get started, simply copy/paste the <code>Before.css</code> file into your project and link to it in the head of your HTML document.</p>`)}
 
-${examples ?? ""}`;
-  };
+      ${HTML.section(
+        html`
+          <h2>Elements</h2>
+          <p>The following visual HTML5 elements are styled by Before:</p>
+          <ul style="list-style-type: none; display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; margin: 0;">
+            ${HTML.tagList(elementTags)}
+          </ul>
+        `,
+        "elements",
+      )}
 
-  // Generate the skill.md content
-  const skillMd = `# ${library.name} ${library.version}
+      ${library.elements.map(HTML.elementDetails).join("\n")}
 
-## Goal
-${library.description}
+      ${HTML.section(
+        html`
+          <h2>Components</h2>
+          <p>The following components are built using semantic HTML and styled by Before:</p>
+          <ul style="list-style-type: none; display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; margin: 0;">
+            ${HTML.tagList(componentTags)}
+          </ul>
+        `,
+        "components",
+      )}
 
-## Core Principle: Classless CSS
+      ${library.components.map(HTML.componentDetails).join("\n")}
 
-**Before is a classless CSS library.** This means:
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    `,
+  });
+  Bun.file("docs/index.html").write(pageHtml);
+  //#endregion Generate HTML
 
-- ❌ **Never use CSS classes** (no \`class="..."\` attributes)
-- ✅ **Use semantic HTML elements** (\`<nav>\`, \`<article>\`, \`<section>\`, etc.)
-- ✅ **Use ARIA roles and attributes** (\`role="tablist"\`, \`aria-orientation="vertical"\`)
-- ✅ **Use HTML5 native attributes** (\`name="accordion-group"\`, \`open\`, \`disabled\`)
-- ✅ **Use data attributes** (\`data-sticky\`, \`data-variant="..."\`)
+  //#region Generate CSS
+  const renderBlocks = (items: { styles: Record<string, unknown> }[]) =>
+    items
+      .filter((item) => item.styles && Object.keys(item.styles).length > 0)
+      .map((item) =>
+        Object.entries(item.styles)
+          .map(([sel, styles]) => CSS.block(sel, styles))
+          .join("\n\n"),
+      )
+      .join("\n\n");
 
----
+  const pageCss = CSS.stylesheet([
+    `/* Before - A classless, semantic CSS reset */\n/* Version: ${library.version} */`,
+    CSS.header("Reset"),
+    Object.entries(library.reset)
+      .map(([sel, styles]) => CSS.block(sel, styles))
+      .join("\n\n"),
+    CSS.header("Tokens"),
+    CSS.tokens(library.tokens),
+    CSS.header("Elements"),
+    renderBlocks(library.elements),
+    CSS.header("Components"),
+    renderBlocks(library.components as { styles: Record<string, unknown> }[]),
+  ]);
 
-## Tokens (CSS Custom Properties)
+  Bun.file("docs/before.css").write(pageCss);
+  Bun.file("docs/before.min.css").write(CSS.minify(pageCss));
+  //#endregion Generate CSS
 
-The library provides these CSS custom properties for theming:
+  //#region Generate Markdown
+  const tokensCode = Object.entries(library.tokens)
+    .map(([k, v]) => `  ${k}: ${v};`)
+    .join("\n");
 
-\`\`\`css
-:root {
-${Object.entries(library.tokens)
-  .map(([token, value]) => `  ${token}: ${value};`)
-  .join("\n")}
-}
-\`\`\`
+  const skillMd = MD.sections(
+    [MD.h(1, `${library.name} ${library.version}`), MD.h(2, "Goal"), library.description].join("\n\n"),
 
----
+    [
+      MD.h(2, "Core Principle: Classless CSS"),
+      "**Before is a classless CSS library.** This means:",
+      MD.li("**Never use CSS classes** (no `class=\"...\"`)", false),
+      MD.li("**Use semantic HTML elements** (`<nav>`, `<article>`, etc.)", true),
+      MD.li("**Use ARIA roles and attributes**", true),
+      MD.li("**Use HTML5 native attributes**", true),
+      MD.li("**Use data attributes when needed**", true),
+    ].join("\n"),
 
-## Elements
+    [MD.h(2, "Tokens"), MD.codeBlock("css", `:root {\n${tokensCode}\n}`)].join("\n\n"),
 
-The following HTML5 elements are styled by Before Style:
+    [MD.h(2, "Elements"), library.elements.map(MD.element).join("\n\n---\n\n")].join("\n\n"),
 
-${library.elements.map(renderElementDoc).join("\n\n---\n\n")}
+    [MD.h(2, "Components"), library.components.map(MD.component).join("\n\n---\n\n")].join("\n\n"),
 
----
+    [
+      MD.h(2, "Quick Reference"),
+      MD.h(3, "Selector Patterns"),
+      MD.table(
+        ["Pattern", "Purpose"],
+        [
+          ['`nav[role="navigation"]`', "Navigation menu"],
+          ['`nav[aria-orientation="vertical"]`', "Vertical navigation"],
+          ["`nav[data-sticky]`", "Sticky navigation"],
+          ["`details[name]`", "Accordion (grouped)"],
+          ['`[role="tablist"]`', "Tab container"],
+          ['`[role="tabpanel"]`', "Tab panel"],
+          ['`[role="group"]`', "Tab panels container"],
+          ['`li[role="separator"]`', "Menu divider"],
+          ['`a[aria-current="page"]`', "Current page indicator"],
+        ],
+      ),
+      MD.h(3, "Do's and Don'ts"),
+      MD.table(
+        ["✅ DO", "❌ DON'T"],
+        [
+          ["Use semantic HTML5 elements", "Use div soup"],
+          ["Use ARIA roles for components", "Use CSS classes"],
+          ["Use ARIA attributes for state", "Forget accessibility"],
+          ["Use HTML5 native attributes", "Use inline styles for layout"],
+          ["Use data attributes when needed", "Mix with class-based frameworks"],
+        ],
+      ),
+    ].join("\n\n"),
 
-## Components
-
-The following components are built using semantic HTML:
-
-${library.components.map(renderComponentDoc).join("\n\n---\n\n")}
-
----
-
-## Quick Reference
-
-### Selector Patterns
-
-| Pattern | Purpose |
-|---------|---------|
-| \`nav[role="navigation"]\` | Navigation menu |
-| \`nav[aria-orientation="vertical"]\` | Vertical navigation |
-| \`nav[data-sticky]\` | Sticky navigation |
-| \`details[name]\` | Accordion (grouped) |
-| \`[role="tablist"]\` | Tab container |
-| \`[role="tabpanel"]\` | Tab panel |
-| \`[role="group"]\` | Tab panels container |
-| \`li[role="separator"]\` | Menu divider |
-| \`a[aria-current="page"]\` | Current page indicator |
-
-### Do's and Don'ts
-
-| ✅ DO | ❌ DON'T |
-|-------|----------|
-| Use semantic HTML5 elements | Use div soup |
-| Use ARIA roles for components | Use CSS classes |
-| Use ARIA attributes for state | Forget accessibility |
-| Use HTML5 native attributes | Use inline styles for layout |
-| Use data attributes when needed | Mix with class-based frameworks |
-
----
-
-## Page Template
-
-\`\`\`html
-<!DOCTYPE html>
+    [
+      MD.h(2, "Page Template"),
+      MD.codeBlock(
+        "html",
+        `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -4798,12 +4977,17 @@ ${library.components.map(renderComponentDoc).join("\n\n---\n\n")}
     <p>© 2026 Company Name</p>
   </footer>
 </body>
-</html>
-\`\`\`
-`;
+</html>`,
+      ),
+    ].join("\n\n"),
+  );
 
   Bun.file("docs/before.md").write(skillMd);
   Bun.file("README.md").write(skillMd);
+  //#endregion Generate Markdown
 }
+//#endregion Compile Function
+
+//#endregion Compile
 
 compile();

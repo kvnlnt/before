@@ -1,4 +1,4 @@
-/* Before - A classless, semantic CSS reset for HTML5 elements and accessible components */
+/* Before - A classless, semantic CSS reset */
 /* Version: 1.0.0 */
 
 /* ==========================================================================
@@ -34,7 +34,7 @@ img {
 }
 
 /* ==========================================================================
-   Tokens (CSS Custom Properties)
+   Tokens
    ========================================================================== */
 
 :root {

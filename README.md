@@ -1,6 +1,7 @@
 # Before 1.0.0
 
 ## Goal
+
 Before is a classless, semantic style reset that styles HTML5 elements directly, providing accessible defaults without relying on
 <a target="_blank" href="https://css-tricks.com/different-ways-to-write-css/">utility-first CSS libraries</a> or overly complex frameworks.
 It is themeable (via <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">CSS custom properties</a>) and designed for
@@ -10,21 +11,19 @@ All components are implemented according to the
 <a href="https://www.w3.org/WAI/ARIA/apg/patterns/">ARIA Authoring Practices Guide (APG)</a>, ensuring they are accessible, predictable, and keyboard-friendly, so your semantic HTML remains usable for everyone.
     
 
+---
+
 ## Core Principle: Classless CSS
-
 **Before is a classless CSS library.** This means:
-
-- ❌ **Never use CSS classes** (no `class="..."` attributes)
-- ✅ **Use semantic HTML elements** (`<nav>`, `<article>`, `<section>`, etc.)
-- ✅ **Use ARIA roles and attributes** (`role="tablist"`, `aria-orientation="vertical"`)
-- ✅ **Use HTML5 native attributes** (`name="accordion-group"`, `open`, `disabled`)
-- ✅ **Use data attributes** (`data-sticky`, `data-variant="..."`)
+- ❌ **Never use CSS classes** (no `class="..."`)
+- ✅ **Use semantic HTML elements** (`<nav>`, `<article>`, etc.)
+- ✅ **Use ARIA roles and attributes**
+- ✅ **Use HTML5 native attributes**
+- ✅ **Use data attributes when needed**
 
 ---
 
-## Tokens (CSS Custom Properties)
-
-The library provides these CSS custom properties for theming:
+## Tokens
 
 ```css
 :root {
@@ -105,12 +104,9 @@ The library provides these CSS custom properties for theming:
 
 ## Elements
 
-The following HTML5 elements are styled by Before Style:
-
 ### `<a>` - a
 
 Anchor element that creates a hyperlink to other pages, files, or locations.
-
 
 #### Default Link
 
@@ -195,7 +191,6 @@ A hidden link that becomes visible on focus, allowing keyboard users to skip to 
 
 Represents an abbreviation or acronym with an optional title for the full description.
 
-
 #### Abbreviation
 
 Dotted underline indicates hover for full text.
@@ -209,7 +204,6 @@ Dotted underline indicates hover for full text.
 ### `<address>` - address
 
 Provides contact information for the nearest article or body ancestor.
-
 
 #### Address
 
@@ -228,7 +222,6 @@ Italic contact information block.
 
 Represents a self-contained composition intended for independent distribution or reuse.
 
-
 #### Article
 
 Self-contained content block with implicit padding.
@@ -245,7 +238,6 @@ Self-contained content block with implicit padding.
 ### `<aside>` - aside
 
 Represents content tangentially related to the main content, often used for sidebars.
-
 
 #### Aside
 
@@ -267,7 +259,6 @@ Sidebar or supplementary content with subtle styling.
 
 Embeds sound content with controls for playback.
 
-
 #### Audio Player
 
 Full-width audio player with native controls.
@@ -286,7 +277,6 @@ Full-width audio player with native controls.
 
 Represents text stylistically offset from normal text without conveying extra importance.
 
-
 #### Bold
 
 Bold text for stylistic offset.
@@ -300,7 +290,6 @@ Bold text for stylistic offset.
 ### `<blockquote>` - blockquote
 
 Indicates an extended quotation from another source.
-
 
 #### Block Quote
 
@@ -318,7 +307,6 @@ Indented with a left border to distinguish quoted content.
 
 Represents the content of an HTML document.
 
-
 #### Default Body
 
 Clean, readable defaults with system fonts, comfortable line height, and responsive max-width for optimal reading.
@@ -333,7 +321,6 @@ Clean, readable defaults with system fonts, comfortable line height, and respons
 
 Produces a line break in text.
 
-
 #### Line Break
 
 Forces a line break within text.
@@ -347,7 +334,6 @@ Forces a line break within text.
 ### `<canvas>` - canvas
 
 Container for graphics drawn via scripting (usually JavaScript).
-
 
 #### Canvas
 
@@ -364,7 +350,6 @@ Drawing surface with responsive sizing.
 ### `<caption>` - caption
 
 Specifies the title of a table.
-
 
 #### Table Caption
 
@@ -384,7 +369,6 @@ Descriptive title displayed above the table.
 
 Represents the title of a creative work being referenced.
 
-
 #### Citation
 
 Italic text for referencing creative works.
@@ -398,7 +382,6 @@ Italic text for referencing creative works.
 ### `<code>` - code
 
 Displays a fragment of computer code.
-
 
 #### Inline Code
 
@@ -424,7 +407,6 @@ Wrap code in pre for multi-line code blocks.
 
 Links content with a machine-readable translation.
 
-
 #### Data
 
 Machine-readable value with human display.
@@ -438,7 +420,6 @@ Machine-readable value with human display.
 ### `<dd>` - dd
 
 Provides the description or value for a term in a description list.
-
 
 #### Definition Description
 
@@ -457,7 +438,6 @@ Indented description for a term.
 
 Represents text that has been deleted from a document.
 
-
 #### Deleted Text
 
 Strikethrough styling to indicate removed content.
@@ -471,7 +451,6 @@ Strikethrough styling to indicate removed content.
 ### `<details>` - details
 
 Creates a disclosure widget from which the user can obtain additional information.
-
 
 #### Disclosure Widget
 
@@ -489,7 +468,6 @@ Expandable content with toggle control.
 ### `<dialog>` - dialog
 
 Represents a dialog box or other interactive component.
-
 
 #### Dialog
 
@@ -509,7 +487,6 @@ A modal dialog box for user interaction.
 
 Indicates the defining instance of a term.
 
-
 #### Definition
 
 Italic styling for terms being defined.
@@ -523,7 +500,6 @@ Italic styling for terms being defined.
 ### `<div>` - div
 
 A generic container for flow content with no semantic meaning.
-
 
 #### Div Container
 
@@ -540,7 +516,6 @@ Generic block-level container.
 ### `<dl>` - dl
 
 Represents a description list of term-description pairs.
-
 
 #### Description List
 
@@ -561,7 +536,6 @@ A list of terms and their descriptions, perfect for glossaries or metadata.
 
 Specifies a term in a description list.
 
-
 #### Definition Term
 
 Bold term in a definition list.
@@ -578,7 +552,6 @@ Bold term in a definition list.
 ### `<em>` - em
 
 Marks text with stress emphasis.
-
 
 #### Emphasized Text
 
@@ -602,7 +575,6 @@ Embeds external content from an external application or plugin.
 
 Groups related elements within a form.
 
-
 #### Form Group
 
 Bordered container for grouping related form fields.
@@ -623,7 +595,6 @@ Bordered container for grouping related form fields.
 
 Represents a caption or legend for a figure.
 
-
 #### Figure Caption
 
 Smaller, muted text for describing figure content.
@@ -637,7 +608,6 @@ Smaller, muted text for describing figure content.
 ### `<figure>` - figure
 
 Represents self-contained content with an optional caption.
-
 
 #### Figure with Caption
 
@@ -656,7 +626,6 @@ Image container with descriptive caption below.
 
 Represents the footer of a section or page, typically containing authorship or copyright.
 
-
 #### Footer
 
 Footer content container.
@@ -672,7 +641,6 @@ Footer content container.
 ### `<form>` - form
 
 Represents a section containing interactive controls for submitting information.
-
 
 #### Basic Form
 
@@ -694,7 +662,6 @@ A simple form with inputs and a submit button.
 
 Represents the highest level section heading.
 
-
 #### Page Heading
 
 The main heading of the page. Bold and large for clear hierarchy.
@@ -708,7 +675,6 @@ The main heading of the page. Bold and large for clear hierarchy.
 ### `<h2>` - h2
 
 Represents a second-level section heading.
-
 
 #### Heading 2
 
@@ -724,7 +690,6 @@ Major section heading at 2rem size.
 
 Represents a third-level section heading.
 
-
 #### Heading 3
 
 Subsection heading at 1.5rem size.
@@ -738,7 +703,6 @@ Subsection heading at 1.5rem size.
 ### `<h4>` - h4
 
 Represents a fourth-level section heading.
-
 
 #### Heading 4
 
@@ -754,7 +718,6 @@ Minor heading at 1.25rem size.
 
 Represents a fifth-level section heading.
 
-
 #### Heading 5
 
 Small heading at 1rem size.
@@ -769,7 +732,6 @@ Small heading at 1rem size.
 
 Represents the lowest level section heading.
 
-
 #### Heading 6
 
 Smallest heading at 0.875rem size.
@@ -783,7 +745,6 @@ Smallest heading at 0.875rem size.
 ### `<header>` - header
 
 Represents introductory content or navigational aids for a section or page.
-
 
 #### Header
 
@@ -805,7 +766,6 @@ Introductory content container.
 
 Groups a heading with related content such as subheadings.
 
-
 #### Heading Group
 
 Groups heading with subtitle, reduced spacing between.
@@ -823,7 +783,6 @@ Groups heading with subtitle, reduced spacing between.
 
 Represents a thematic break between paragraph-level elements.
 
-
 #### Horizontal Rule
 
 A subtle line to separate content sections.
@@ -840,7 +799,6 @@ A subtle line to separate content sections.
 
 Represents text in an alternate voice or mood, such as technical terms or foreign phrases.
 
-
 #### Italic
 
 Italic text for alternate voice or mood.
@@ -854,7 +812,6 @@ Italic text for alternate voice or mood.
 ### `<iframe>` - iframe
 
 Embeds another HTML page within the current page.
-
 
 #### Iframe
 
@@ -870,7 +827,6 @@ Embedded frame with no border.
 
 Embeds an image into the document.
 
-
 #### Image
 
 Responsive image that scales to its container.
@@ -884,7 +840,6 @@ Responsive image that scales to its container.
 ### `<input>` - input
 
 Creates interactive form controls for accepting user data.
-
 
 #### Text Input
 
@@ -917,7 +872,6 @@ Radio button for single selection from a group.
 
 Represents text that has been added to a document.
 
-
 #### Inserted Text
 
 Underlined to indicate newly added content.
@@ -931,7 +885,6 @@ Underlined to indicate newly added content.
 ### `<kbd>` - kbd
 
 Represents user keyboard input.
-
 
 #### Keyboard Key
 
@@ -947,7 +900,6 @@ Styled like a physical keyboard key with border and shadow.
 
 Represents a caption for an item in a user interface.
 
-
 #### Form Label
 
 Block-level label with subtle weight.
@@ -962,7 +914,6 @@ Block-level label with subtle weight.
 ### `<legend>` - legend
 
 Represents a caption for a fieldset.
-
 
 #### Fieldset Legend
 
@@ -982,7 +933,6 @@ Caption displayed on fieldset border.
 
 Represents an item in a list.
 
-
 #### List Item
 
 Individual list items with comfortable spacing.
@@ -998,7 +948,6 @@ Individual list items with comfortable spacing.
 ### `<main>` - main
 
 Represents the dominant content of the body of a document.
-
 
 #### Main Content
 
@@ -1017,7 +966,6 @@ Primary content area of the document.
 
 Represents text marked or highlighted for reference or notation.
 
-
 #### Highlighted Text
 
 Yellow highlight for marking relevant content.
@@ -1031,7 +979,6 @@ Yellow highlight for marking relevant content.
 ### `<nav>` - nav
 
 Represents a section with navigation links.
-
 
 #### Navigation
 
@@ -1059,7 +1006,6 @@ Represents an external resource such as an image, plugin, or nested browsing con
 
 Represents an ordered list of items.
 
-
 #### Basic Ordered List
 
 A numbered list for sequential content.
@@ -1078,7 +1024,6 @@ A numbered list for sequential content.
 
 Container for the result of a calculation or user action.
 
-
 #### Output
 
 Displays calculation results inline.
@@ -1092,7 +1037,6 @@ Displays calculation results inline.
 ### `<p>` - p
 
 Represents a paragraph of text.
-
 
 #### Basic Paragraph
 
@@ -1108,7 +1052,6 @@ Standard paragraph with comfortable line height and spacing.
 ### `<picture>` - picture
 
 Contains source elements and one img element for responsive images.
-
 
 #### Picture
 
@@ -1127,7 +1070,6 @@ Responsive image container for multiple sources.
 
 Represents preformatted text preserving whitespace and line breaks.
 
-
 #### Preformatted Text
 
 Preserves whitespace and uses monospace font with subtle background.
@@ -1144,7 +1086,6 @@ Line 2
 
 Displays the completion progress of a task.
 
-
 #### Progress Bar
 
 Visual progress indicator using the primary color.
@@ -1158,7 +1099,6 @@ Visual progress indicator using the primary color.
 ### `<q>` - q
 
 Represents a short inline quotation.
-
 
 #### Inline Quote
 
@@ -1174,7 +1114,6 @@ Automatically wrapped with quotation marks.
 
 Represents text that is no longer accurate or relevant.
 
-
 #### Strikethrough
 
 Text with line through indicating outdated content.
@@ -1189,7 +1128,6 @@ Text with line through indicating outdated content.
 
 Represents sample output from a computer program.
 
-
 #### Sample Output
 
 Monospace font for computer output.
@@ -1203,7 +1141,6 @@ Monospace font for computer output.
 ### `<section>` - section
 
 Represents a standalone section of a document.
-
 
 #### Section
 
@@ -1221,7 +1158,6 @@ Thematic grouping of content.
 ### `<select>` - select
 
 Represents a control providing a menu of options.
-
 
 #### Select Dropdown
 
@@ -1242,7 +1178,6 @@ Dropdown menu for selecting from predefined options.
 
 Represents side comments or small print.
 
-
 #### Small Print
 
 Reduced font size for fine print or disclaimers.
@@ -1256,7 +1191,6 @@ Reduced font size for fine print or disclaimers.
 ### `<span>` - span
 
 A generic inline container for phrasing content.
-
 
 #### Span
 
@@ -1272,7 +1206,6 @@ Generic inline container.
 
 Indicates text with strong importance or urgency.
 
-
 #### Strong Text
 
 Bold text for emphasis and importance.
@@ -1287,7 +1220,6 @@ Bold text for emphasis and importance.
 
 Represents subscript text.
 
-
 #### Subscript
 
 Text positioned below the baseline.
@@ -1301,7 +1233,6 @@ Text positioned below the baseline.
 ### `<summary>` - summary
 
 Specifies a visible heading for a details element.
-
 
 #### Summary
 
@@ -1320,7 +1251,6 @@ Clickable heading that toggles the details content.
 
 Represents superscript text.
 
-
 #### Superscript
 
 Text positioned above the baseline.
@@ -1334,7 +1264,6 @@ Text positioned above the baseline.
 ### `<table>` - table
 
 Represents tabular data with rows and columns.
-
 
 #### Basic Table
 
@@ -1358,7 +1287,6 @@ A simple table with headers and data cells.
 
 Groups the body content rows of a table.
 
-
 #### Table Body
 
 Container for table body rows.
@@ -1381,7 +1309,6 @@ Container for table body rows.
 
 Represents a data cell in a table.
 
-
 #### Table Data Cell
 
 Standard data cell with padding and border.
@@ -1400,7 +1327,6 @@ Standard data cell with padding and border.
 
 Represents a multi-line plain text editing control.
 
-
 #### Text Area
 
 Multi-line input with resizable height.
@@ -1414,7 +1340,6 @@ Multi-line input with resizable height.
 ### `<tfoot>` - tfoot
 
 Groups the footer content rows of a table.
-
 
 #### Table Footer
 
@@ -1434,7 +1359,6 @@ Container for table footer rows, often for totals.
 
 Represents a header cell in a table.
 
-
 #### Table Header
 
 Bold header cell with bottom border.
@@ -1451,7 +1375,6 @@ Bold header cell with bottom border.
 ### `<thead>` - thead
 
 Groups the header content rows of a table.
-
 
 #### Table Head
 
@@ -1474,7 +1397,6 @@ Container for table header rows.
 
 Represents a specific period in time or a machine-readable datetime.
 
-
 #### Time
 
 Machine-readable date/time with human display.
@@ -1488,7 +1410,6 @@ Machine-readable date/time with human display.
 ### `<tr>` - tr
 
 Represents a row of cells in a table.
-
 
 #### Table Row
 
@@ -1508,7 +1429,6 @@ Horizontal row containing table cells.
 
 Represents text with an unarticulated annotation, such as misspelled words.
 
-
 #### Underline
 
 Wavy underline for annotated text like spelling errors.
@@ -1522,7 +1442,6 @@ Wavy underline for annotated text like spelling errors.
 ### `<ul>` - ul
 
 Represents an unordered list of items.
-
 
 #### Basic Unordered List
 
@@ -1558,7 +1477,6 @@ Lists can be nested for hierarchical content.
 
 Represents the name of a variable in a mathematical or programming context.
 
-
 #### Variable
 
 Italic monospace for variable names.
@@ -1572,7 +1490,6 @@ Italic monospace for variable names.
 ### `<video>` - video
 
 Embeds video content with playback controls.
-
 
 #### Video Player
 
@@ -1590,14 +1507,11 @@ Responsive video with native controls.
 
 ## Components
 
-The following components are built using semantic HTML:
-
 ### Accordion
 
 A vertically stacked set of interactive headings that each reveal a section of content.
 
 **Selectors:** `details[name]`, `details[name] > summary`, `details[name] > summary::-webkit-details-marker`, `details[name] > :not(summary)`, `details[name] > :last-child`
-
 
 #### Basic Accordion
 
@@ -1693,7 +1607,6 @@ A live region that displays important, time-sensitive information to the user.
 
 **Selectors:** `[role="alert"]`, `[role="alert"][aria-live="assertive"]`, `[role="alert"][aria-live="polite"]`, `[role="alert"][data-tone="success"]`, `[role="alert"][data-tone="warning"]`
 
-
 #### Basic Alert
 
 A simple alert for displaying messages to users.
@@ -1731,7 +1644,6 @@ A navigation aid that shows the user's current location within a site hierarchy.
 
 **Selectors:** `nav[aria-label*="breadcrumb"], nav[aria-label*="Breadcrumb"]`, `nav[aria-label*="breadcrumb"] ol, nav[aria-label*="Breadcrumb"] ol`, `nav[aria-label*="breadcrumb"] li, nav[aria-label*="Breadcrumb"] li`, `nav[aria-label*="breadcrumb"] li:not(:last-child)::after, nav[aria-label*="Breadcrumb"] li:not(:last-child)::after`, `nav[aria-label*="breadcrumb"] a[aria-current="page"], nav[aria-label*="Breadcrumb"] a[aria-current="page"]`
 
-
 #### Basic Breadcrumb
 
 A simple breadcrumb navigation showing the page hierarchy.
@@ -1754,7 +1666,6 @@ A simple breadcrumb navigation showing the page hierarchy.
 An interactive element that triggers an action when activated by the user.
 
 **Selectors:** `button, [role='button'], input[type='button'], input[type='submit'], input[type='reset']`, `button:hover, [role='button']:hover, input[type='button']:hover, input[type='submit']:hover, input[type='reset']:hover`, `button:active, [role='button']:active, input[type='button']:active, input[type='submit']:active, input[type='reset']:active`, `button:focus-visible, [role='button']:focus-visible, input[type='button']:focus-visible, input[type='submit']:focus-visible, input[type='reset']:focus-visible`, `button:disabled, [role='button'][aria-disabled='true'], input[type='button']:disabled, input[type='submit']:disabled, input[type='reset']:disabled`
-
 
 #### Button Variants
 
@@ -1786,7 +1697,6 @@ A rotating set of content items that can be navigated through sequentially.
 
 **Selectors:** `[aria-roledescription="carousel"]`, `[aria-roledescription="carousel"] [aria-live]`, `[aria-roledescription="carousel"] [aria-live]::-webkit-scrollbar`, `[aria-roledescription="slide"]`, `[aria-roledescription="carousel"] [aria-label*="revious"], [aria-roledescription="carousel"] [aria-label*="ext"]`
 
-
 #### Basic Carousel
 
 A simple image carousel with navigation buttons.
@@ -1815,7 +1725,6 @@ A form control that allows users to select one or more options from a set.
 
 **Selectors:** `input[type="checkbox"]`, `input[type="checkbox"]:checked`, `input[type="checkbox"]:checked::after`, `input[type="checkbox"]:focus-visible`, `input[type="checkbox"]:disabled`
 
-
 #### Checkbox States
 
 Checkboxes in various states.
@@ -1836,7 +1745,6 @@ Checkboxes in various states.
 A composite widget combining a text input with a popup listbox for selecting values.
 
 **Selectors:** `[role="combobox"]`, `[role="combobox"] input`, `[role="combobox"] [role="listbox"]`, `[role="combobox"] [role="listbox"][hidden]`, `[role="combobox"] [role="option"]`
-
 
 #### Basic Combobox
 
@@ -1862,7 +1770,6 @@ A modal or non-modal window that appears above the page content requiring user i
 
 **Selectors:** `dialog`, `dialog::backdrop`, `dialog[open]`, `dialog header`, `dialog footer`
 
-
 #### Basic Dialog
 
 A modal dialog with header and footer.
@@ -1887,7 +1794,6 @@ A modal dialog with header and footer.
 A button that controls the visibility of a section of content.
 
 **Selectors:** `details:not([name])`, `details:not([name]) > summary`, `details:not([name]) > summary::-webkit-details-marker`, `details:not([name]) > summary::after`, `details:not([name])[open] > summary::after`
-
 
 #### Basic Disclosure
 
@@ -1920,7 +1826,6 @@ A scrollable list of articles where new content may be added as the user scrolls
 
 **Selectors:** `[role="feed"]`, `[role="feed"] article`, `[role="feed"] article:focus-within`
 
-
 #### Basic Feed
 
 A feed of articles with proper ARIA attributes.
@@ -1949,7 +1854,6 @@ A feed of articles with proper ARIA attributes.
 An interactive two-dimensional data structure with rows and columns of cells.
 
 **Selectors:** `[role="grid"]`, `[role="grid"] [role="row"]`, `[role="grid"] [role="gridcell"], [role="grid"] [role="columnheader"], [role="grid"] [role="rowheader"]`, `[role="grid"] [role="columnheader"], [role="grid"] [role="rowheader"]`, `[role="grid"] [role="gridcell"]:focus, [role="grid"] [role="columnheader"]:focus, [role="grid"] [role="rowheader"]:focus`
-
 
 #### Basic Grid
 
@@ -1983,7 +1887,6 @@ A container for introductory content or navigational aids at the top of a page o
 
 **Selectors:** `header`, `header > :first-child`, `header > :last-child`, `article header, section header`
 
-
 #### Page Header
 
 A header element at the top of a page.
@@ -2002,7 +1905,6 @@ A header element at the top of a page.
 Semantic regions that help assistive technology users navigate and understand page structure.
 
 **Selectors:** `main`, `aside:not(article aside)`, `footer`
-
 
 #### Page Landmarks
 
@@ -2036,7 +1938,6 @@ An interactive reference to a resource that navigates the user when activated.
 
 **Selectors:** `a[aria-disabled="true"]`, `a[download]::before`, `a[target="_blank"]::before`
 
-
 #### Link Variants
 
 Different link states and types.
@@ -2059,7 +1960,6 @@ A widget that allows users to select one or more items from a list of choices.
 
 **Selectors:** `[role="listbox"]`, `[role="listbox"] [role="option"]`, `[role="listbox"] [role="option"]:hover`, `[role="listbox"] [role="option"][aria-selected="true"]`, `[role="listbox"] [role="option"]:focus`
 
-
 #### Single Select Listbox
 
 A listbox for selecting a single option.
@@ -2080,7 +1980,6 @@ A listbox for selecting a single option.
 A widget that offers a list of actions or options that the user can invoke. Supports horizontal and vertical layouts, nested submenus, sticky positioning, and dividers—all with pure CSS and semantic HTML.
 
 **Selectors:** `nav[role="navigation"]`, `nav[role="navigation"] ul`, `nav[role="navigation"] li`, `nav[role="navigation"] a, nav[role="navigation"] button`, `nav[role="navigation"] a[href^="#"]::before`
-
 
 #### Horizontal Menu
 
@@ -2219,7 +2118,6 @@ A graphical display of a numeric value within a known range.
 
 **Selectors:** `meter`, `meter::-webkit-meter-bar`, `meter::-webkit-meter-optimum-value`, `meter::-webkit-meter-suboptimum-value`, `meter::-webkit-meter-even-less-good-value`
 
-
 #### Meter States
 
 Meters showing different value ranges.
@@ -2239,7 +2137,6 @@ Meters showing different value ranges.
 A group of mutually exclusive options where only one can be selected at a time.
 
 **Selectors:** `input[type="radio"]`, `input[type="radio"]:checked`, `input[type="radio"]:checked::after`, `input[type="radio"]:focus-visible`, `input[type="radio"]:disabled`
-
 
 #### Radio Group
 
@@ -2263,7 +2160,6 @@ An input control that allows users to select a value from a range by dragging a 
 
 **Selectors:** `input[type="range"]`, `input[type="range"]::-webkit-slider-thumb`, `input[type="range"]::-moz-range-thumb`, `input[type="range"]::-webkit-slider-thumb:active`, `input[type="range"]:focus-visible`
 
-
 #### Range Slider
 
 A slider for selecting a value within a range.
@@ -2284,7 +2180,6 @@ A numeric input field with increment and decrement buttons for adjusting values.
 
 **Selectors:** `input[type="number"]`, `input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button`, `input[type="number"]:focus`, `input[type="number"]:disabled`, `[role="spinbutton"]`
 
-
 #### Number Input
 
 A numeric input with spin buttons.
@@ -2304,7 +2199,6 @@ A numeric input with spin buttons.
 A toggle control that represents an on/off or enabled/disabled state.
 
 **Selectors:** `[role="switch"]`, `[role="switch"]::before`, `[role="switch"][aria-checked="true"]`, `[role="switch"][aria-checked="true"]::before`, `[role="switch"]:focus-visible`
-
 
 #### Switch Toggle
 
@@ -2334,7 +2228,6 @@ Toggle switches for on/off states.
 A structured grid of data organized in rows and columns for displaying information.
 
 **Selectors:** `table`, `th, td`, `th`, `thead th`, `tbody tr:hover`
-
 
 #### Basic Table
 
@@ -2377,7 +2270,6 @@ A data table with headers and rows.
 A set of layered content panels where only one panel is displayed at a time. Uses CSS-only functionality with radio inputs for state management.
 
 **Selectors:** `[role="tablist"]`, `[role="tablist"] > li`, `[role="tablist"][aria-orientation="vertical"]`, `[role="tablist"] input[type="radio"]`, `[role="tablist"] label`
-
 
 #### Horizontal Tabs
 
@@ -2468,7 +2360,6 @@ A container for grouping related controls such as buttons and menu items.
 
 **Selectors:** `[role="toolbar"]`, `[role="toolbar"][aria-orientation="vertical"]`, `[role="toolbar"] [role="separator"]`, `[role="toolbar"][aria-orientation="vertical"] [role="separator"]`, `[role="toolbar"] [role="group"]`
 
-
 #### Basic Toolbar
 
 A horizontal toolbar with grouped controls.
@@ -2513,7 +2404,6 @@ A contextual popup that displays descriptive information about an element on hov
 
 **Selectors:** `[data-tooltip]`, `[data-tooltip]::after`, `[data-tooltip]:hover::after, [data-tooltip]:focus::after`, `[data-tooltip][data-tooltip-position="bottom"]::after`, `[data-tooltip][data-tooltip-position="left"]::after`
 
-
 #### Data Attribute Tooltip
 
 CSS-only tooltips using data-tooltip attribute.
@@ -2546,7 +2436,6 @@ Tooltip with proper ARIA role for accessibility.
 A grid widget that combines the features of a tree and a data grid.
 
 **Selectors:** `[role="treegrid"]`, `[role="treegrid"] [role="row"]`, `[role="treegrid"] [role="gridcell"], [role="treegrid"] [role="columnheader"]`, `[role="treegrid"] [role="columnheader"]`, `[role="treegrid"] [role="row"][aria-level="2"] [role="gridcell"]:first-child`
-
 
 #### Basic Treegrid
 
@@ -2584,7 +2473,6 @@ A hierarchical data grid with expandable rows.
 A hierarchical list that can have nested groups of items that can be expanded or collapsed.
 
 **Selectors:** `[role="tree"]`, `[role="tree"] [role="group"]`, `[role="tree"] [role="treeitem"]`, `[role="tree"] [role="treeitem"]:hover`, `[role="tree"] [role="treeitem"]:focus`
-
 
 #### Basic Treeview
 
@@ -2624,7 +2512,6 @@ A movable divider that separates two sections and allows resizing them.
 
 **Selectors:** `[role="separator"][aria-orientation="vertical"]`, `[role="separator"]:not([aria-orientation]), [role="separator"][aria-orientation="horizontal"]`, `[role="separator"]:hover, [role="separator"]:focus`, `[role="separator"]:focus`
 
-
 #### Horizontal Splitter
 
 A vertical divider between two horizontal panes.
@@ -2656,7 +2543,7 @@ A horizontal divider between two vertical panes.
 ### Selector Patterns
 
 | Pattern | Purpose |
-|---------|---------|
+|-------|-------|
 | `nav[role="navigation"]` | Navigation menu |
 | `nav[aria-orientation="vertical"]` | Vertical navigation |
 | `nav[data-sticky]` | Sticky navigation |
@@ -2670,7 +2557,7 @@ A horizontal divider between two vertical panes.
 ### Do's and Don'ts
 
 | ✅ DO | ❌ DON'T |
-|-------|----------|
+|-------|-------|
 | Use semantic HTML5 elements | Use div soup |
 | Use ARIA roles for components | Use CSS classes |
 | Use ARIA attributes for state | Forget accessibility |
