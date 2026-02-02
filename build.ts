@@ -4754,7 +4754,7 @@ function compile() {
 </body>
 </html>`;
 
-  Bun.file("docs/before.html").write(html);
+  Bun.file("docs/index.html").write(html);
 
   // Helper to convert camelCase to kebab-case
   const toKebab = (str: string) => str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
