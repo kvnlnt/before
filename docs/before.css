@@ -1,4 +1,4 @@
-/* Before Style - A classless, semantic CSS reset for HTML5 elements and accessible components */
+/* Before - A classless, semantic CSS reset for HTML5 elements and accessible components */
 /* Version: 1.0.0 */
 
 /* ==========================================================================
@@ -151,8 +151,8 @@ a:visited {
   opacity: 0.85;
 }
 
-a[target="_blank"]::after {
-  content: " ↗";
+a[target="_blank"]::before {
+  content: "↗ ";
   font-size: 0.75em;
   color: color-mix(in srgb, currentColor 30%, transparent);
 }
@@ -165,13 +165,13 @@ a[download]::before {
 
 a[href^="mailto:"]::before {
   content: "✉ ";
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   color: color-mix(in srgb, currentColor 30%, transparent);
 }
 
 a[href^="tel:"]::before {
   content: "☎ ";
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: color-mix(in srgb, currentColor 30%, transparent);
 }
 
@@ -369,7 +369,7 @@ details {
     border-color: oklch(0.35 0.01 260);
   }
   details[open] > summary {
-    border-color: oklch(0.35 0.01 260);
+    border-color: oklch(0.35 0.01 260 / var(--tone_opacity_faint));
   }
 }
 
@@ -402,7 +402,7 @@ details[open] > summary::before {
 }
 
 details[open] > summary {
-  border-block-end: 1px solid oklch(0.85 0.005 260);
+  border-block-end: 1px solid oklch(var(--palette_white) / var(--tone_opacity_faint));
 }
 
 details > :not(summary) {
@@ -1265,10 +1265,6 @@ input[type="checkbox"][aria-invalid="true"] {
 }
 
 dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   max-width: 90vw;
   max-height: 85vh;
   padding: 1.5em;
@@ -1281,6 +1277,7 @@ dialog {
 
 dialog::backdrop {
   background-color: var(--surface_backdrop);
+  backdrop-filter: blur(2px);
 }
 
 dialog[open] {
@@ -1484,13 +1481,13 @@ a[aria-disabled="true"] {
   cursor: not-allowed;
 }
 
-a[download]::after {
-  content: " ⬇";
+a[download]::before {
+  content: "⬇ ";
   font-size: 0.8em;
 }
 
-a[target="_blank"]::after {
-  content: " ↗";
+a[target="_blank"]::before {
+  content: "↗ ";
   font-size: 0.8em;
 }
 
@@ -2040,6 +2037,10 @@ table caption {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+[role="tablist"] > li {
+  margin: 0;
 }
 
 [role="tablist"][aria-orientation="vertical"] {

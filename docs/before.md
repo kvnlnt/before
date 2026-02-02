@@ -12,7 +12,7 @@ All components are implemented according to the
 
 ## Core Principle: Classless CSS
 
-**Before Style is a classless CSS library.** This means:
+**Before is a classless CSS library.** This means:
 
 - ❌ **Never use CSS classes** (no `class="..."` attributes)
 - ✅ **Use semantic HTML elements** (`<nav>`, `<article>`, `<section>`, etc.)
@@ -224,14 +224,6 @@ Italic contact information block.
 
 ---
 
-### `<area>` - area
-
-Defines a clickable area inside an image map.
-
-
-
----
-
 ### `<article>` - article
 
 Represents a self-contained composition intended for independent distribution or reuse.
@@ -301,36 +293,6 @@ Bold text for stylistic offset.
 
 ```html
 <p>The <b>quick</b> brown fox jumps.</p>
-```
-
----
-
-### `<bdi>` - bdi
-
-Isolates a span of text that might be formatted in a different direction from surrounding text.
-
-
-#### Bidirectional Isolation
-
-Isolates text direction from surrounding content.
-
-```html
-<p>User: <bdi>محمد</bdi> - 5 posts</p>
-```
-
----
-
-### `<bdo>` - bdo
-
-Overrides the current text directionality.
-
-
-#### Bidirectional Override
-
-Forces text direction override.
-
-```html
-<p><bdo dir="rtl">This text is reversed</bdo></p>
 ```
 
 ---
@@ -458,22 +420,6 @@ Wrap code in pre for multi-line code blocks.
 
 ---
 
-### `<col>` - col
-
-Definesss a column within a table and is used for styling columns.
-
-
-
----
-
-### `<colgroup>` - colgroup
-
-Groups one or more columns in a table for formatting.
-
-
-
----
-
 ### `<data>` - data
 
 Links content with a machine-readable translation.
@@ -485,26 +431,6 @@ Machine-readable value with human display.
 
 ```html
 <p>Price: <data value="49.99">$49.99</data></p>
-```
-
----
-
-### `<datalist>` - datalist
-
-Contains a set of option elements representing predefined options for an input.
-
-
-#### Datalist
-
-Provides autocomplete options for an input.
-
-```html
-<input list="browsers" placeholder="Choose a browser">
-<datalist id="browsers">
-  <option value="Chrome">
-  <option value="Firefox">
-  <option value="Safari">
-</datalist>
 ```
 
 ---
@@ -570,9 +496,10 @@ Represents a dialog box or other interactive component.
 A modal dialog box for user interaction.
 
 ```html
+<button onclick="document.querySelector('dialog').showModal()">Open Dialog</button>
 <dialog>
   <p>This is a dialog box.</p>
-  <button>Close</button>
+  <button onclick="this.closest('dialog').close()">Close</button>
 </dialog>
 ```
 
@@ -853,14 +780,6 @@ Smallest heading at 0.875rem size.
 
 ---
 
-### `<head>` - head
-
-Contains machine-readable metadata about the document.
-
-
-
----
-
 ### `<header>` - header
 
 Represents introductory content or navigational aids for a section or page.
@@ -914,14 +833,6 @@ A subtle line to separate content sections.
 <hr>
 <p>Content below the break.</p>
 ```
-
----
-
-### `<html>` - html
-
-The root element of an HTML document.
-
-
 
 ---
 
@@ -1102,14 +1013,6 @@ Primary content area of the document.
 
 ---
 
-### `<map>` - map
-
-Defines an image map with clickable areas.
-
-
-
----
-
 ### `<mark>` - mark
 
 Represents text marked or highlighted for reference or notation.
@@ -1122,14 +1025,6 @@ Yellow highlight for marking relevant content.
 ```html
 <p>Search results: The <mark>quick brown fox</mark> jumps over the lazy dog.</p>
 ```
-
----
-
-### `<meta>` - meta
-
-Represents metadata that cannot be expressed with other HTML elements.
-
-
 
 ---
 
@@ -1149,14 +1044,6 @@ Navigation block for site or page links.
   <a href="#">Contact</a>
 </nav>
 ```
-
----
-
-### `<noscript>` - noscript
-
-Defines content to display when scripts are not supported or disabled.
-
-
 
 ---
 
@@ -1183,47 +1070,6 @@ A numbered list for sequential content.
   <li>Second step</li>
   <li>Third step</li>
 </ol>
-```
-
----
-
-### `<optgroup>` - optgroup
-
-Groups related options within a select element.
-
-
-#### Option Group
-
-Groups options with a bold label.
-
-```html
-<select>
-  <optgroup label="Fruits">
-    <option>Apple</option>
-    <option>Banana</option>
-  </optgroup>
-  <optgroup label="Vegetables">
-    <option>Carrot</option>
-  </optgroup>
-</select>
-```
-
----
-
-### `<option>` - option
-
-Represents an option in a select element or datalist.
-
-
-#### Option
-
-Selectable item within a dropdown.
-
-```html
-<select>
-  <option value="1">First option</option>
-  <option value="2">Second option</option>
-</select>
 ```
 
 ---
@@ -1324,54 +1170,6 @@ Automatically wrapped with quotation marks.
 
 ---
 
-### `<rp>` - rp
-
-Provides fallback parentheses for browsers that don't support ruby annotations.
-
-
-#### Ruby Parentheses
-
-Fallback parentheses for non-ruby browsers.
-
-```html
-<ruby>漢<rp>(</rp><rt>kan</rt><rp>)</rp></ruby>
-```
-
----
-
-### `<rt>` - rt
-
-Specifies the ruby text component of a ruby annotation.
-
-
-#### Ruby Text
-
-Small annotation text above base character.
-
-```html
-<ruby>漢<rt>kan</rt></ruby>
-```
-
----
-
-### `<ruby>` - ruby
-
-Represents a ruby annotation for showing pronunciation of East Asian characters.
-
-
-#### Ruby Annotation
-
-Shows pronunciation above characters.
-
-```html
-<ruby>
-  漢 <rp>(</rp><rt>kan</rt><rp>)</rp>
-  字 <rp>(</rp><rt>ji</rt><rp>)</rp>
-</ruby>
-```
-
----
-
 ### `<s>` - s
 
 Represents text that is no longer accurate or relevant.
@@ -1399,14 +1197,6 @@ Monospace font for computer output.
 ```html
 <p>The error was: <samp>File not found</samp></p>
 ```
-
----
-
-### `<script>` - script
-
-Embeds or references executable JavaScript code.
-
-
 
 ---
 
@@ -1448,14 +1238,6 @@ Dropdown menu for selecting from predefined options.
 
 ---
 
-### `<slot>` - slot
-
-A placeholder inside a web component for custom markup.
-
-
-
----
-
 ### `<small>` - small
 
 Represents side comments or small print.
@@ -1468,14 +1250,6 @@ Reduced font size for fine print or disclaimers.
 ```html
 <p>Price: $99 <small>(plus tax)</small></p>
 ```
-
----
-
-### `<source>` - source
-
-Specifies multiple media resources for picture, audio, or video elements.
-
-
 
 ---
 
@@ -1506,14 +1280,6 @@ Bold text for emphasis and importance.
 ```html
 <p>This is <strong>very important</strong> information.</p>
 ```
-
----
-
-### `<style>` - style
-
-Contains CSS styling information for a document.
-
-
 
 ---
 
@@ -1630,14 +1396,6 @@ Standard data cell with padding and border.
 
 ---
 
-### `<template>` - template
-
-Holds HTML content that is not rendered but can be instantiated via JavaScript.
-
-
-
----
-
 ### `<textarea>` - textarea
 
 Represents a multi-line plain text editing control.
@@ -1727,14 +1485,6 @@ Machine-readable date/time with human display.
 
 ---
 
-### `<title>` - title
-
-Defines the document title shown in the browser tab.
-
-
-
----
-
 ### `<tr>` - tr
 
 Represents a row of cells in a table.
@@ -1751,14 +1501,6 @@ Horizontal row containing table cells.
   <tr><td>B1</td><td>B2</td></tr>
 </table>
 ```
-
----
-
-### `<track>` - track
-
-Specifies timed text tracks for media elements.
-
-
 
 ---
 
@@ -1842,21 +1584,6 @@ Responsive video with native controls.
 " type="video/mp4">
   Your browser does not support video.
 </video>
-```
-
----
-
-### `<wbr>` - wbr
-
-Represents an optional line break opportunity.
-
-
-#### Word Break Opportunity
-
-Suggests where a line break may occur.
-
-```html
-<p>super<wbr>cali<wbr>fragilistic</p>
 ```
 
 ---
@@ -2307,7 +2034,7 @@ Semantic landmark elements for page structure.
 
 An interactive reference to a resource that navigates the user when activated.
 
-**Selectors:** `a[aria-disabled="true"]`, `a[download]::after`, `a[target="_blank"]::after`
+**Selectors:** `a[aria-disabled="true"]`, `a[download]::before`, `a[target="_blank"]::before`
 
 
 #### Link Variants
@@ -2649,7 +2376,7 @@ A data table with headers and rows.
 
 A set of layered content panels where only one panel is displayed at a time. Uses CSS-only functionality with radio inputs for state management.
 
-**Selectors:** `[role="tablist"]`, `[role="tablist"][aria-orientation="vertical"]`, `[role="tablist"] input[type="radio"]`, `[role="tablist"] label`, `[role="tablist"][aria-orientation="vertical"] label`
+**Selectors:** `[role="tablist"]`, `[role="tablist"] > li`, `[role="tablist"][aria-orientation="vertical"]`, `[role="tablist"] input[type="radio"]`, `[role="tablist"] label`
 
 
 #### Horizontal Tabs

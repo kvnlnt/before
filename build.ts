@@ -220,8 +220,8 @@ All components are implemented according to the
           color: "currentColor",
           opacity: "0.85",
         },
-        'a[target="_blank"]::after': {
-          content: '" ↗"',
+        'a[target="_blank"]::before': {
+          content: '"↗ "',
           fontSize: "0.75em",
           color: "color-mix(in srgb, currentColor 30%, transparent)",
         },
@@ -232,12 +232,12 @@ All components are implemented according to the
         },
         'a[href^="mailto:"]::before': {
           content: '"✉ "',
-          fontSize: "1.35rem",
+          fontSize: "1.5rem",
           color: "color-mix(in srgb, currentColor 30%, transparent)",
         },
         'a[href^="tel:"]::before': {
           content: '"☎ "',
-          fontSize: "0.8rem",
+          fontSize: "1rem",
           color: "color-mix(in srgb, currentColor 30%, transparent)",
         },
         'a[aria-disabled="true"]': {
@@ -347,13 +347,6 @@ All components are implemented according to the
       ],
     },
     {
-      title: "area",
-      tag: "area",
-      description: "Defines a clickable area inside an image map.",
-      styles: {},
-      variants: [],
-    },
-    {
       title: "article",
       tag: "article",
       description: "Represents a self-contained composition intended for independent distribution or reuse.",
@@ -439,32 +432,6 @@ All components are implemented according to the
           title: "Bold",
           description: "Bold text for stylistic offset.",
           markup: `<p>The <b>quick</b> brown fox jumps.</p>`,
-        },
-      ],
-    },
-    {
-      title: "bdi",
-      tag: "bdi",
-      description: "Isolates a span of text that might be formatted in a different direction from surrounding text.",
-      styles: {},
-      variants: [
-        {
-          title: "Bidirectional Isolation",
-          description: "Isolates text direction from surrounding content.",
-          markup: `<p>User: <bdi>محمد</bdi> - 5 posts</p>`,
-        },
-      ],
-    },
-    {
-      title: "bdo",
-      tag: "bdo",
-      description: "Overrides the current text directionality.",
-      styles: {},
-      variants: [
-        {
-          title: "Bidirectional Override",
-          description: "Forces text direction override.",
-          markup: `<p><bdo dir="rtl">This text is reversed</bdo></p>`,
         },
       ],
     },
@@ -686,20 +653,6 @@ All components are implemented according to the
       ],
     },
     {
-      title: "col",
-      tag: "col",
-      description: "Definesss a column within a table and is used for styling columns.",
-      styles: {},
-      variants: [],
-    },
-    {
-      title: "colgroup",
-      tag: "colgroup",
-      description: "Groups one or more columns in a table for formatting.",
-      styles: {},
-      variants: [],
-    },
-    {
       title: "data",
       tag: "data",
       description: "Links content with a machine-readable translation.",
@@ -709,24 +662,6 @@ All components are implemented according to the
           title: "Data",
           description: "Machine-readable value with human display.",
           markup: `<p>Price: <data value="49.99">$49.99</data></p>`,
-        },
-      ],
-    },
-    {
-      title: "datalist",
-      tag: "datalist",
-      description: "Contains a set of option elements representing predefined options for an input.",
-      styles: {},
-      variants: [
-        {
-          title: "Datalist",
-          description: "Provides autocomplete options for an input.",
-          markup: `<input list="browsers" placeholder="Choose a browser">
-<datalist id="browsers">
-  <option value="Chrome">
-  <option value="Firefox">
-  <option value="Safari">
-</datalist>`,
         },
       ],
     },
@@ -784,7 +719,7 @@ All components are implemented according to the
             borderColor: "oklch(0.35 0.01 260)",
           },
           "details[open] > summary": {
-            borderColor: "oklch(0.35 0.01 260)",
+            borderColor: "oklch(0.35 0.01 260 / var(--tone_opacity_faint))",
           },
         },
         summary: {
@@ -812,7 +747,7 @@ All components are implemented according to the
           transform: "rotate(0deg)",
         },
         "details[open] > summary": {
-          borderBlockEnd: "1px solid oklch(0.85 0.005 260)",
+          borderBlockEnd: "1px solid oklch(var(--palette_white) / var(--tone_opacity_faint))",
         },
         "details > :not(summary)": {
           paddingInline: "1em",
@@ -858,9 +793,10 @@ All components are implemented according to the
         {
           title: "Dialog",
           description: "A modal dialog box for user interaction.",
-          markup: `<dialog>
+          markup: `<button onclick="document.querySelector('dialog').showModal()">Open Dialog</button>
+<dialog>
   <p>This is a dialog box.</p>
-  <button>Close</button>
+  <button onclick="this.closest('dialog').close()">Close</button>
 </dialog>`,
         },
       ],
@@ -1347,12 +1283,6 @@ All components are implemented according to the
       ],
     },
     {
-      title: "head",
-      tag: "head",
-      description: "Contains machine-readable metadata about the document.",
-      styles: {},
-    },
-    {
       title: "header",
       tag: "header",
       description: "Represents introductory content or navigational aids for a section or page.",
@@ -1431,12 +1361,6 @@ All components are implemented according to the
 <p>Content below the break.</p>`,
         },
       ],
-    },
-    {
-      title: "html",
-      tag: "html",
-      description: "The root element of an HTML document.",
-      styles: {},
     },
     {
       title: "i",
@@ -1620,12 +1544,6 @@ All components are implemented according to the
       ],
     },
     {
-      title: "map",
-      tag: "map",
-      description: "Defines an image map with clickable areas.",
-      styles: {},
-    },
-    {
       title: "mark",
       tag: "mark",
       description: "Represents text marked or highlighted for reference or notation.",
@@ -1651,12 +1569,6 @@ All components are implemented according to the
       ],
     },
     {
-      title: "meta",
-      tag: "meta",
-      description: "Represents metadata that cannot be expressed with other HTML elements.",
-      styles: {},
-    },
-    {
       title: "nav",
       tag: "nav",
       description: "Represents a section with navigation links.",
@@ -1676,12 +1588,6 @@ All components are implemented according to the
 </nav>`,
         },
       ],
-    },
-    {
-      title: "noscript",
-      tag: "noscript",
-      description: "Defines content to display when scripts are not supported or disabled.",
-      styles: {},
     },
     {
       title: "object",
@@ -1716,43 +1622,6 @@ All components are implemented according to the
   <li>Second step</li>
   <li>Third step</li>
 </ol>`,
-        },
-      ],
-    },
-    {
-      title: "optgroup",
-      tag: "optgroup",
-      description: "Groups related options within a select element.",
-      styles: {},
-      variants: [
-        {
-          title: "Option Group",
-          description: "Groups options with a bold label.",
-          markup: `<select>
-  <optgroup label="Fruits">
-    <option>Apple</option>
-    <option>Banana</option>
-  </optgroup>
-  <optgroup label="Vegetables">
-    <option>Carrot</option>
-  </optgroup>
-</select>`,
-        },
-      ],
-    },
-    {
-      title: "option",
-      tag: "option",
-      description: "Represents an option in a select element or datalist.",
-      styles: {},
-      variants: [
-        {
-          title: "Option",
-          description: "Selectable item within a dropdown.",
-          markup: `<select>
-  <option value="1">First option</option>
-  <option value="2">Second option</option>
-</select>`,
         },
       ],
     },
@@ -1859,48 +1728,6 @@ Line 2
       ],
     },
     {
-      title: "rp",
-      tag: "rp",
-      description: "Provides fallback parentheses for browsers that don't support ruby annotations.",
-      styles: {},
-      variants: [
-        {
-          title: "Ruby Parentheses",
-          description: "Fallback parentheses for non-ruby browsers.",
-          markup: `<ruby>漢<rp>(</rp><rt>kan</rt><rp>)</rp></ruby>`,
-        },
-      ],
-    },
-    {
-      title: "rt",
-      tag: "rt",
-      description: "Specifies the ruby text component of a ruby annotation.",
-      styles: {},
-      variants: [
-        {
-          title: "Ruby Text",
-          description: "Small annotation text above base character.",
-          markup: `<ruby>漢<rt>kan</rt></ruby>`,
-        },
-      ],
-    },
-    {
-      title: "ruby",
-      tag: "ruby",
-      description: "Represents a ruby annotation for showing pronunciation of East Asian characters.",
-      styles: {},
-      variants: [
-        {
-          title: "Ruby Annotation",
-          description: "Shows pronunciation above characters.",
-          markup: `<ruby>
-  漢 <rp>(</rp><rt>kan</rt><rp>)</rp>
-  字 <rp>(</rp><rt>ji</rt><rp>)</rp>
-</ruby>`,
-        },
-      ],
-    },
-    {
       title: "s",
       tag: "s",
       description: "Represents text that is no longer accurate or relevant.",
@@ -1929,12 +1756,6 @@ Line 2
           markup: `<p>The error was: <samp>File not found</samp></p>`,
         },
       ],
-    },
-    {
-      title: "script",
-      tag: "script",
-      description: "Embeds or references executable JavaScript code.",
-      styles: {},
     },
     {
       title: "section",
@@ -1975,12 +1796,6 @@ Line 2
       ],
     },
     {
-      title: "slot",
-      tag: "slot",
-      description: "A placeholder inside a web component for custom markup.",
-      styles: {},
-    },
-    {
       title: "small",
       tag: "small",
       description: "Represents side comments or small print.",
@@ -1996,12 +1811,6 @@ Line 2
           markup: `<p>Price: $99 <small>(plus tax)</small></p>`,
         },
       ],
-    },
-    {
-      title: "source",
-      tag: "source",
-      description: "Specifies multiple media resources for picture, audio, or video elements.",
-      styles: {},
     },
     {
       title: "span",
@@ -2032,12 +1841,6 @@ Line 2
           markup: `<p>This is <strong>very important</strong> information.</p>`,
         },
       ],
-    },
-    {
-      title: "style",
-      tag: "style",
-      description: "Contains CSS styling information for a document.",
-      styles: {},
     },
     {
       title: "sub",
@@ -2177,12 +1980,6 @@ Line 2
       ],
     },
     {
-      title: "template",
-      tag: "template",
-      description: "Holds HTML content that is not rendered but can be instantiated via JavaScript.",
-      styles: {},
-    },
-    {
       title: "textarea",
       tag: "textarea",
       description: "Represents a multi-line plain text editing control.",
@@ -2287,12 +2084,6 @@ Line 2
       ],
     },
     {
-      title: "title",
-      tag: "title",
-      description: "Defines the document title shown in the browser tab.",
-      styles: {},
-    },
-    {
       title: "tr",
       tag: "tr",
       description: "Represents a row of cells in a table.",
@@ -2308,12 +2099,6 @@ Line 2
 </table>`,
         },
       ],
-    },
-    {
-      title: "track",
-      tag: "track",
-      description: "Specifies timed text tracks for media elements.",
-      styles: {},
     },
     {
       title: "u",
@@ -2404,19 +2189,6 @@ Line 2
 " type="video/mp4">
   Your browser does not support video.
 </video>`,
-        },
-      ],
-    },
-    {
-      title: "wbr",
-      tag: "wbr",
-      description: "Represents an optional line break opportunity.",
-      styles: {},
-      variants: [
-        {
-          title: "Word Break Opportunity",
-          description: "Suggests where a line break may occur.",
-          markup: `<p>super<wbr>cali<wbr>fragilistic</p>`,
         },
       ],
     },
@@ -2944,10 +2716,6 @@ Line 2
       description: "A modal or non-modal window that appears above the page content requiring user interaction.",
       styles: {
         dialog: {
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
           maxWidth: "90vw",
           maxHeight: "85vh",
           padding: "1.5em",
@@ -2959,6 +2727,7 @@ Line 2
         },
         "dialog::backdrop": {
           backgroundColor: "var(--surface_backdrop)",
+          backdropFilter: "blur(2px)",
         },
         "dialog[open]": {
           display: "block",
@@ -3276,12 +3045,12 @@ Line 2
           pointerEvents: "none",
           cursor: "not-allowed",
         },
-        "a[download]::after": {
-          content: '" ⬇"',
+        "a[download]::before": {
+          content: '"⬇ "',
           fontSize: "0.8em",
         },
-        'a[target="_blank"]::after': {
-          content: '" ↗"',
+        'a[target="_blank"]::before': {
+          content: '"↗ "',
           fontSize: "0.8em",
         },
       },
@@ -4069,6 +3838,10 @@ Line 2
           padding: "0",
           listStyle: "none",
         },
+        // No margin on direct children
+        '[role="tablist"] > li': {
+          margin: "0",
+        },
         // Vertical orientation
         '[role="tablist"][aria-orientation="vertical"]': {
           flexDirection: "column",
@@ -4732,7 +4505,7 @@ function compile() {
 
   <section id="elements">
     <h2>Elements</h2>
-    <p>The following HTML5 elements are styled by Before Style:</p>
+    <p>The following visual HTML5 elements are styled by Before:</p>
     <ul style="list-style-type: none; display: flex; flex-wrap: wrap; row-gap: 0rem; column-gap: 1rem; padding: 0; margin: 0;">
       ${renderTagList(elementTagLinks)}
     </ul>
@@ -4742,7 +4515,7 @@ function compile() {
 
   <section id="components">
     <h2>Components</h2>
-    <p>The following components are built using semantic HTML and styled by Before Style:</p>
+    <p>The following components are built using semantic HTML and styled by Before:</p>
     <ul style="list-style-type: none; display: flex; flex-wrap: wrap; row-gap: 0rem; column-gap: 1rem; padding: 0; margin: 0;">
       ${renderTagList(componentTagLinks)}
     </ul>
@@ -4799,7 +4572,7 @@ function compile() {
   };
 
   // Render CSS
-  const css = `/* Before Style - A classless, semantic CSS reset for HTML5 elements and accessible components */
+  const css = `/* Before - A classless, semantic CSS reset for HTML5 elements and accessible components */
 /* Version: ${library.version} */
 
 /* ==========================================================================
@@ -4927,7 +4700,7 @@ ${library.description}
 
 ## Core Principle: Classless CSS
 
-**Before Style is a classless CSS library.** This means:
+**Before is a classless CSS library.** This means:
 
 - ❌ **Never use CSS classes** (no \`class="..."\` attributes)
 - ✅ **Use semantic HTML elements** (\`<nav>\`, \`<article>\`, \`<section>\`, etc.)
